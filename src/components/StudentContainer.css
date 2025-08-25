@@ -1,6 +1,6 @@
 .student-container-wrapper { 
   display: flex;
-  min-height: 100vh;
+  min-height: 96vh;
   background-color: #f0f2f5;
 overflow: hidden;
   
