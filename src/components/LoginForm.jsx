@@ -37,33 +37,41 @@ const LoginForm = () => {
 
     setLoading(true);
     try {
+      console.log("Submitting login with data:", formData);
+
       const response = await fetch('https://sof-edu.onrender.com/student/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
+      console.log("Raw response:", response);
+
       let data = {};
       try {
         data = await response.json();
-      } catch {
-        // response body might be empty or invalid JSON
+        console.log("Parsed response JSON:", data);
+      } catch (err) {
+        console.error("Failed to parse response JSON:", err);
       }
 
       if (!response.ok) {
-        toast.error(data.message || `Login failed (status ${response.status})`);
+        console.warn("Login failed, status:", response.status, "data:", data);
+        toast.error(data.message || 'Login failed');
       } else {
-        toast.success('Login successful!');
+        toast.success('Login successful');
         if (data.token) {
           localStorage.setItem('student_token', data.token);
+          console.log("Token saved:", data.token);
         }
         if (data.student?.firstname) {
           localStorage.setItem('studentFirstname', data.student.firstname);
+          console.log("Student firstname saved:", data.student.firstname);
         }
         navigate('/student-dashboard');
       }
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Login error (network or server issue):', error);
       toast.error('Server error');
     } finally {
       setLoading(false);
@@ -135,7 +143,6 @@ const LoginForm = () => {
             <Link to="/signup-student" className="lsf-link"> Sign up</Link>
           </p>
         </form>
-
         <p className="lsf-footer">Powered by BADMAN</p>
         <ToastContainer position="top-right" autoClose={4000} />
       </div>
