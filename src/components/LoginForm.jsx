@@ -16,7 +16,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const value = e.target.value.trim();
+    setFormData({ ...formData, [e.target.name]: value });
     setErrors({ ...errors, [e.target.name]: '' });
   };
 
@@ -37,7 +38,7 @@ const LoginForm = () => {
 
     setLoading(true);
     try {
-      console.log("Submitting login with data:", formData);
+      console.log("Submitting login for studentId:", formData.studentId);
 
       const response = await fetch('https://sof-edu-backend.onrender.com/student/login', {
         method: 'POST',
@@ -45,34 +46,34 @@ const LoginForm = () => {
         body: JSON.stringify(formData),
       });
 
-      console.log("Raw response:", response);
-
       let data = {};
       try {
         data = await response.json();
-        console.log("Parsed response JSON:", data);
-      } catch (err) {
-        console.error("Failed to parse response JSON:", err);
+      } catch {
+        toast.error("Invalid server response");
       }
 
       if (!response.ok) {
-        console.warn("Login failed, status:", response.status, "data:", data);
-        toast.error(data.message || 'Login failed');
+        if (response.status === 401) {
+          toast.error(data.message || 'Unauthorized: Invalid credentials');
+        } else if (response.status === 403) {
+          toast.error(data.message || 'Access forbidden');
+        } else {
+          toast.error(data.message || 'Login failed');
+        }
       } else {
         toast.success('Login successful');
         if (data.token) {
           localStorage.setItem('student_token', data.token);
-          console.log("Token saved:", data.token);
         }
         if (data.student?.firstname) {
           localStorage.setItem('studentFirstname', data.student.firstname);
-          console.log("Student firstname saved:", data.student.firstname);
         }
         navigate('/student-dashboard');
       }
     } catch (error) {
       console.error('Login error (network or server issue):', error);
-      toast.error('Server error');
+      toast.error('Server error. Try again later.');
     } finally {
       setLoading(false);
     }

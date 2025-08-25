@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
-  FaBook,
-  FaClipboardList,
-  FaCalendarAlt,
-  FaBell,
-  FaUser,
-  FaChartLine,
-  FaIdBadge,
-  FaBuilding,
-  FaGraduationCap,
+  FaBook, FaClipboardList, FaCalendarAlt, FaBell, FaUser,
+  FaChartLine, FaIdBadge, FaBuilding, FaGraduationCap
 } from "react-icons/fa";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import LoadingSpinner from "../components/LoadingSpinner"; 
+import LoadingSpinner from "../components/LoadingSpinner";
 import "react-toastify/dist/ReactToastify.css";
 import "./StudentDashboard.css";
 
@@ -38,7 +31,7 @@ const StudentDashboard = () => {
 
   const [notifications, setNotifications] = useState([]);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -49,10 +42,8 @@ const StudentDashboard = () => {
       if (!token) {
         toast.error("Session expired. Please log in again.");
         navigate("/login-student");
-        return ;
+        return;
       }
-
-
 
       try {
         const [infoRes, statsRes, notifRes] = await Promise.all([
@@ -67,15 +58,7 @@ const StudentDashboard = () => {
           }),
         ]);
 
-        const {
-          fullName,
-          profilepic,
-          studentId,
-          department,
-          level,
-          cgpa,
-          paymentStatus,
-        } = infoRes.data;
+        const { fullName, profilepic, studentId, department, level, cgpa, paymentStatus } = infoRes.data;
 
         setStudentInfo({
           name: fullName || "Student",
@@ -89,18 +72,21 @@ const StudentDashboard = () => {
 
         setDashboardStats(statsRes.data);
         setNotifications(notifRes.data.notifications || []);
-
         toast.success("Dashboard loaded");
       } catch (error) {
-        console.error("Dashboard error:", error);
+        console.error("Dashboard error:", error.response || error.message);
         if (error.response?.status === 401) {
           toast.error("Unauthorized. Please log in again.");
           localStorage.removeItem("student_token");
           return navigate("/login-student");
         }
+        if (error.response?.status === 403) {
+          toast.error("Access denied. Contact admin.");
+          return;
+        }
         toast.error("Failed to load dashboard");
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -108,27 +94,28 @@ const StudentDashboard = () => {
   }, [navigate]);
 
   const handleToggleNotifications = async () => {
-    setShowNotifications((prev) => !prev);
+    setShowNotifications((prev) => {
+      const newState = !prev;
+      if (newState && notifications.some((n) => !n.isRead)) {
+        markNotificationsAsRead();
+      }
+      return newState;
+    });
+  };
 
+  const markNotificationsAsRead = async () => {
     const token = localStorage.getItem("student_token");
     if (!token) return;
 
-    if (!showNotifications && notifications.some((n) => !n.isRead)) {
-      try {
-        await axios.patch(
-          "https://sof-edu-backend.onrender.com/student/notifications/mark-read",
-          null,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-
-        setNotifications((prev) =>
-          prev.map((n) => ({ ...n, isRead: true }))
-        );
-      } catch (err) {
-        console.error("Error marking notifications as read:", err);
-      }
+    try {
+      await axios.patch(
+        "https://sof-edu-backend.onrender.com/student/notifications/mark-read",
+        null,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
+    } catch (err) {
+      console.error("Error marking notifications as read:", err);
     }
   };
 
@@ -159,7 +146,6 @@ const StudentDashboard = () => {
     },
   ];
 
-  
   if (loading) return <LoadingSpinner message="Preparing your student dashboard..." />;
 
   return (
@@ -236,7 +222,7 @@ const StudentDashboard = () => {
         </div>
       </div>
 
-      {/* Summary Cards with Student Info */}
+      {/* Summary Cards */}
       <div className="summary-cards">
         {summaryData.map((item, idx) => (
           <div className="summary-card" key={idx}>
