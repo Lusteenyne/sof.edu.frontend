@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {  Routes, Route } from 'react-router-dom';
 import './App.css';
-import LandingPage from './components/LandingPage';
+
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import SuperAdminSignup from './components/SuperAdminSignup';
@@ -28,7 +28,7 @@ const App = () => {
   return (
   <>
       <Routes>
-        <Route path="/no" element={<LandingPage />} />
+        
         <Route path="/" element={<NewLanding />} />
         <Route path="/signup-student" element={<SignupForm />} />
         <Route path="/login-student" element={<LoginForm />} />
