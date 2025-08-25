@@ -15,7 +15,7 @@ function TeacherNotifications() {
 
   useEffect(() => {
     console.log('Fetching teacher notifications...');
-    fetch('http://localhost:5003/teacher/notifications', {
+    fetch('https://sof-edu.onrender.com/teacher/notifications', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -39,7 +39,7 @@ function TeacherNotifications() {
   const markAllRead = () => {
     console.log('Marking all notifications as read...');
     setMarking(true);
-    fetch('http://localhost:5003/teacher/notifications/mark-read', {
+    fetch('https://sof-edu.onrender.com/teacher/notifications/mark-read', {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,

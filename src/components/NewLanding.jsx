@@ -76,7 +76,7 @@ function NewLanding() {
     setStatus('Sending...');
 
     try {
-      const res = await fetch('http://localhost:5003/admin/contact', {
+      const res = await fetch('https://sof-edu.onrender.com/admin/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

@@ -37,7 +37,7 @@ const LoginForm = () => {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5003/student/login', {
+      const response = await fetch('https://sof-edu.onrender.com/student/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

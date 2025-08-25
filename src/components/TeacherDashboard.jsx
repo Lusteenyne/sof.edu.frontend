@@ -43,16 +43,16 @@ const TeacherDashboard = () => {
 
       try {
         const [infoRes, statsRes, notifRes, submissionsRes] = await Promise.all([
-          axios.get("http://localhost:5003/teacher/profile", {
+          axios.get("https://sof-edu.onrender.com/teacher/profile", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:5003/teacher/dashboard/stats", {
+          axios.get("https://sof-edu.onrender.com/teacher/dashboard/stats", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:5003/teacher/notifications", {
+          axios.get("https://sof-edu.onrender.com/teacher/notifications", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:5003/teacher/assignments/submissions/all", {
+          axios.get("https://sof-edu.onrender.com/teacher/assignments/submissions/all", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -100,7 +100,7 @@ const TeacherDashboard = () => {
       debounceRef.current = true;
       try {
         await axios.patch(
-          "http://localhost:5003/teacher/notifications/mark-read",
+          "https://sof-edu.onrender.com/teacher/notifications/mark-read",
           null,
           { headers: { Authorization: `Bearer ${token}` } }
         );

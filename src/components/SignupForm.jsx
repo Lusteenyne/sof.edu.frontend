@@ -37,7 +37,7 @@ const SignupForm = () => {
 
   const checkEmailExists = async (email) => {
     try {
-      const res = await fetch(`http://localhost:5003/student/check-email?email=${encodeURIComponent(email)}`);
+      const res = await fetch(`https://sof-edu.onrender.com/student/check-email?email=${encodeURIComponent(email)}`);
       const data = await res.json();
       return data.exists;
     } catch (err) {
@@ -103,7 +103,7 @@ const SignupForm = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:5003/student/register', {
+      const res = await fetch('https://sof-edu.onrender.com/student/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

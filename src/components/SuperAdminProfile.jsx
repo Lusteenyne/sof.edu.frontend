@@ -34,7 +34,7 @@ const SuperAdminProfile = () => {
     const fetchProfile = async () => {
       setLoading(true);
       try {
-        const res = await fetch('http://localhost:5003/admin/profile', {
+        const res = await fetch('https://sof-edu.onrender.com/admin/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -79,7 +79,7 @@ const SuperAdminProfile = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5003/admin/profile', {
+      const res = await fetch('https://sof-edu.onrender.com/admin/profile', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const SuperAdminProfile = () => {
     formData.append('profilePhoto', selectedPhoto);
 
     try {
-      const res = await fetch('http://localhost:5003/admin/upload-profile-photo', {
+      const res = await fetch('https://sof-edu.onrender.com/admin/upload-profile-photo', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

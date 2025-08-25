@@ -27,7 +27,7 @@ const StudentResults = ({ studentId }) => {
     const fetchResults = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5003/student/approved-results",
+          "https://sof-edu.onrender.com/student/approved-results",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 

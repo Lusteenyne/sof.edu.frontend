@@ -26,10 +26,10 @@ const StudentAssignment = () => {
 
       try {
         const [assignmentRes, submissionRes] = await Promise.all([
-          axios.get('http://localhost:5003/student/assignments', {
+          axios.get('https://sof-edu.onrender.com/student/assignments', {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('http://localhost:5003/student/submissions', {
+          axios.get('https://sof-edu.onrender.com/student/submissions', {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -102,8 +102,8 @@ const StudentAssignment = () => {
 
     try {
       const url = isUpdate
-        ? `http://localhost:5003/student/assignments/${assignmentId}/update`
-        : `http://localhost:5003/student/assignments/${assignmentId}/submit`;
+        ? `https://sof-edu.onrender.com/student/assignments/${assignmentId}/update`
+        : `https://sof-edu.onrender.com/student/assignments/${assignmentId}/submit`;
 
       const method = isUpdate ? axios.put : axios.post;
 
@@ -129,7 +129,7 @@ const StudentAssignment = () => {
     const token = localStorage.getItem('student_token');
     try {
       const res = await axios.get(
-        `http://localhost:5003/student/assignment/${assignmentId}/grade`,
+        `https://sof-edu.onrender.com/student/assignment/${assignmentId}/grade`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

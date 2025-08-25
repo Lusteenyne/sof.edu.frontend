@@ -69,7 +69,7 @@ const StudentChat = () => {
   const fetchTeachers = async () => {
     setLoadingTeachers(true);
     try {
-      const res = await axios.get("http://localhost:5003/student/teachers", {
+      const res = await axios.get("https://sof-edu.onrender.com/student/teachers", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTeachers(res.data || []);
@@ -83,7 +83,7 @@ const StudentChat = () => {
   const fetchUnreadCounts = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5003/student/messages/unread-counts",
+        "https://sof-edu.onrender.com/student/messages/unread-counts",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setUnreadCounts(res.data);
@@ -97,7 +97,7 @@ const StudentChat = () => {
     setMessages([]);
     try {
       const res = await axios.get(
-        `http://localhost:5003/student/messages/teacher?teacherId=${teacherId}`,
+        `https://sof-edu.onrender.com/student/messages/teacher?teacherId=${teacherId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const formatted = res.data.map((msg) => ({
@@ -121,7 +121,7 @@ const StudentChat = () => {
     setLoading(true);
     setMessages([]);
     try {
-      const res = await axios.get("http://localhost:5003/student/messages/admin", {
+      const res = await axios.get("https://sof-edu.onrender.com/student/messages/admin", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const formatted = res.data.map((msg) => ({
@@ -164,8 +164,8 @@ const StudentChat = () => {
 
   try {
     const url = isAdminChat
-      ? "http://localhost:5003/student/messages/admin"
-      : "http://localhost:5003/student/messages/teacher";
+      ? "https://sof-edu.onrender.com/student/messages/admin"
+      : "https://sof-edu.onrender.com/student/messages/teacher";
 
     const payload = isAdminChat
       ? { text: messageText }
@@ -199,7 +199,7 @@ const StudentChat = () => {
     setSending(true);
     try {
       await axios.put(
-        `http://localhost:5003/student/editMessage/${editingMessageId}`,
+        `https://sof-edu.onrender.com/student/editMessage/${editingMessageId}`,
         { newText: text },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -220,7 +220,7 @@ const StudentChat = () => {
     if (!window.confirm("Are you sure you want to delete this message?")) return;
 
     try {
-      await axios.delete(`http://localhost:5003/student/deleteMessage/${id}`, {
+      await axios.delete(`https://sof-edu.onrender.com/student/deleteMessage/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

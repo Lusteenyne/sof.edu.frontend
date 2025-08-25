@@ -78,7 +78,7 @@ const TeacherSignupPage = () => {
     });
 
     try {
-      const res = await fetch('http://localhost:5003/teacher/register', {
+      const res = await fetch('https://sof-edu.onrender.com/teacher/register', {
         method: 'POST',
         body: payload,
       });

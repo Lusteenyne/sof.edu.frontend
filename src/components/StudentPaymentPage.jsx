@@ -28,7 +28,7 @@ const StudentPaymentPage = () => {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch('http://localhost:5003/student/profile', {
+        const res = await fetch('https://sof-edu.onrender.com/student/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -43,7 +43,7 @@ const StudentPaymentPage = () => {
 
     const fetchPayments = async () => {
       try {
-        const res = await fetch('http://localhost:5003/student/payments', {
+        const res = await fetch('https://sof-edu.onrender.com/student/payments', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -85,7 +85,7 @@ const StudentPaymentPage = () => {
     setUploading(true);
 
     try {
-      const res = await fetch('http://localhost:5003/student/payments/upload-transfer-receipt', {
+      const res = await fetch('https://sof-edu.onrender.com/student/payments/upload-transfer-receipt', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -95,7 +95,7 @@ const StudentPaymentPage = () => {
         toast.success('Receipt uploaded successfully');
         setReceipt(null);
         if (fileInputRef.current) fileInputRef.current.value = '';
-        const refreshed = await fetch('http://localhost:5003/student/payments', {
+        const refreshed = await fetch('https://sof-edu.onrender.com/student/payments', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const refreshedData = await refreshed.json();
@@ -126,7 +126,7 @@ const StudentPaymentPage = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:5003/student/payments/verify-paystack/${reference}`,
+        `https://sof-edu.onrender.com/student/payments/verify-paystack/${reference}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -150,7 +150,7 @@ const StudentPaymentPage = () => {
     setLoadingPayment(true);
 
     try {
-      const res = await fetch('http://localhost:5003/student/payments/initiate-paystack', {
+      const res = await fetch('https://sof-edu.onrender.com/student/payments/initiate-paystack', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

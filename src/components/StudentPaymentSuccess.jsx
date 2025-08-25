@@ -3,13 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import './StudentPaymentSuccess.css';
-import LoadingSpinner from './LoadingSpinner'; // Import a loading spinner component
+import LoadingSpinner from './LoadingSpinner'; 
 
 const StudentPaymentSuccess = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [studentName, setStudentName] = useState('');
-  const [loading, setLoading] = useState(true); // State to manage loading
+  const [loading, setLoading] = useState(true); 
   const [paymentDetails, setPaymentDetails] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const StudentPaymentSuccess = () => {
       console.log('📡 Sending request to verify payment with reference:', reference);
 
       const response = await axios.get(
-        `http://localhost:5003/student/payments/verify-paystack/${reference}`,
+        `https://sof-edu.onrender.com/student/payments/verify-paystack/${reference}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

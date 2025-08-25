@@ -26,13 +26,13 @@ const StudentCourses = () => {
     const fetchData = async () => {
       try {
         const [studentRes, availableRes, submittedRes] = await Promise.all([
-          axios.get('http://localhost:5003/student/info', {
+          axios.get('https://sof-edu.onrender.com/student/info', {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('http://localhost:5003/student/courses/matching', {
+          axios.get('https://sof-edu.onrender.com/student/courses/matching', {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get('http://localhost:5003/student/courses/submitted', {
+          axios.get('https://sof-edu.onrender.com/student/courses/submitted', {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -69,7 +69,7 @@ const StudentCourses = () => {
 
     try {
       await axios.post(
-        'http://localhost:5003/student/courses/submit',
+        'https://sof-edu.onrender.com/student/courses/submit',
         { courseIds: selectedCourses.map((c) => c._id) },
         { headers: { Authorization: `Bearer ${token}` } }
       );
