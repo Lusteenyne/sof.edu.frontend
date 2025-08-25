@@ -1,0 +1,143 @@
+.admin-container-wrapper { 
+  display: flex;
+  height: 100vh;
+  background-color: #f0f2f5;
+  overflow: hidden;
+  
+ 
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.admin-container-wrapper::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Main content area */
+.admin-main-content {
+  transition: margin-left 0.3s ease;
+  width: 100%;
+  margin-top: 70px; 
+  overflow-y: auto;
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+}
+
+.admin-main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sidebar state handling */
+.admin-main-expanded {
+  margin-left: 240px; /* Full sidebar */
+}
+
+.admin-main-collapsed {
+  margin-left: 65px; /* Collapsed sidebar */
+}
+
+/* Sticky Header */
+.admin-main-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+/* Toggle Button */
+.admin-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+/* Title */
+.admin-main-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ====== RESPONSIVE STYLES ====== */
+
+/* Tablets and smaller */
+@media screen and (max-width: 1024px) {
+  
+  .admin-main-expanded {
+    margin-left: 140px;
+  }
+
+  .admin-main-collapsed {
+    margin-left: 50px;
+  }
+
+  .admin-main-header {
+    padding: 12px 16px;
+  }
+}
+
+/* Small tablets and large phones */
+@media screen and (max-width: 768px) {
+  .admin-main-expanded,
+  .admin-main-collapsed {
+    margin-left: 0;
+  }
+
+  .admin-main-header {
+    padding: 12px 16px;
+    margin-left: 20px;
+
+  }
+
+  .admin-main-title {
+    font-size: 18px;
+    margin-left: 45px;
+  }
+
+  .admin-toggle-btn {
+    font-size: 20px;
+    margin-right: 14px;
+  }
+}
+
+/* Small phones */
+@media screen and (max-width: 480px) {
+  .admin-main-header {
+    padding: 10px 12px;
+  }
+
+  .admin-main-title {
+    font-size: 17px;
+  }
+
+  .admin-toggle-btn {
+    font-size: 18px;
+    margin-right: 12px;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 360px) {
+  .admin-main-header {
+    padding: 10px 10px;
+  }
+
+  .admin-main-title {
+    font-size: 16px;
+  }
+
+  .admin-toggle-btn {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}

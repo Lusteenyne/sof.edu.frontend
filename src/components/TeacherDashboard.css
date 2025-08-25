@@ -1,0 +1,255 @@
+
+.teacher-dashboard-container {
+  padding: 20px;
+  background-color: #f5f7fa;
+  height: 100vh;
+  
+  font-family: "Segoe UI", sans-serif;
+  
+}
+
+/* Header */
+.teacher-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+/* Profile */
+.teacher-dashboard-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.teacher-dashboard-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.teacher-dashboard-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teacher-dashboard-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1e2b3c;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: 100%;
+  word-break: break-word; 
+}
+
+@media (max-width: 480px) {
+  .teacher-dashboard-name {
+    font-size: 16px;
+    text-align: left;
+  }
+}
+
+
+
+/* Notifications */
+.teacher-dashboard-notification-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.teacher-dashboard-notification-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #1e2b3c;
+  position: relative;
+}
+
+.teacher-dashboard-notification-icon:hover {
+  color: #1a73e8;
+}
+
+.teacher-dashboard-notification-count {
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-weight: bold;
+}
+
+.teacher-dashboard-notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 300px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.teacher-dashboard-notification-dropdown ul {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.teacher-dashboard-notification-dropdown li {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.teacher-dashboard-notification-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.teacher-dashboard-notification-dropdown li p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.teacher-dashboard-notification-dropdown li small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Summary Cards */
+.teacher-dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.teacher-dashboard-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 220px;
+  min-width: 180px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.teacher-dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.teacher-dashboard-icon {
+  font-size: 28px;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+
+.teacher-dashboard-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.teacher-dashboard-card p {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1a73e8;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .teacher-dashboard-container {
+   margin-left: 20px;
+  }
+
+  
+}
+@media (max-width: 768px) {
+
+  .teacher-dashboard-container {
+    margin-left: 60px;
+   width: 86.3%;
+   margin-top: -10px;
+  }
+  /* .teacher-dashboard-name {
+    
+    
+  } */
+
+  .teacher-dashboard-pic {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .teacher-dashboard-notification-dropdown {
+    width: 95vw;
+  }
+}
+
+@media (max-width: 540px){
+  .teacher-dashboard-container{
+    width:81%;  
+  }
+}
+@media (max-width: 430px){
+  .teacher-dashboard-container{
+    width:76.3%; 
+    margin-left: 60px; 
+  }
+}
+
+
+@media (max-width: 414px){
+  .teacher-dashboard-container{
+    width:75.2%; 
+    margin-left: 60px; 
+  }
+}
+@media (max-width: 412px){
+  .teacher-dashboard-container{
+    width:75%; 
+    margin-left: 60px; 
+  }
+}
+
+@media (max-width: 390px){
+  .teacher-dashboard-container{
+    width:74%; 
+    margin-left: 60px; 
+  }
+}
+
+
+@media (max-width: 375px){
+  .teacher-dashboard-container{
+    width:73%; 
+    margin-left: 60px; 
+  }
+}
+
+@media (max-width: 344px){
+  .teacher-dashboard-container{
+    width:71%; 
+    margin-left: 60px; 
+  }
+}

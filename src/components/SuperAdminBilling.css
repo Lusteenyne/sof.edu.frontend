@@ -1,0 +1,451 @@
+.sab-container {
+  padding: 2rem;
+  margin-top: -20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #1e2b3c;
+}
+
+/* Title */
+.sab-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #1e2b3c;
+}
+
+/* School fee section */
+.sab-fee-box {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.sab-fee-box input {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  width: 120px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}
+
+.sab-fee-box button {
+  background-color: #1e2b3c;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.sab-fee-box button:hover {
+  background-color: #16202c;
+}
+
+/* Filter bar */
+.sab-filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.sab-filter-bar input,
+.sab-filter-bar select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 180px;
+}
+
+/* Table styles */
+.sab-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sab-table thead {
+  background-color: #1e2b3c;
+  color: #ffffff;
+}
+
+.sab-table th,
+.sab-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.sab-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.sab-table button {
+  margin: 0 0.25rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Table buttons */
+.sab-table button:first-of-type {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.sab-table button:first-of-type:hover {
+  background-color: #27ae60;
+}
+
+.sab-table button:last-of-type {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.sab-table button:last-of-type:hover {
+  background-color: #c0392b;
+}
+
+/* Sub row */
+.sab-sub-row td {
+  background-color: #f9f9f9;
+  font-size: 0.85rem;
+  color: #444;
+  padding-left: 1rem;
+}
+
+/* Sub-content (expanded details) */
+.sab-sub-content {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.sab-sub-content div {
+  min-width: 150px;
+}
+.view{
+  color: blue;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1020px) {
+  .sab-container {
+    width: 100%;
+    margin-left: -40px;
+    
+  }
+
+  .sab-table {
+    font-size: 0.9rem;
+  }
+
+  .sab-filter-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 93%;
+  }
+}
+
+@media screen and (max-width: 912px){
+.sab-container{
+  width: 92%;
+  margin-left: 3px;
+}
+}
+@media screen and (max-width: 820px){
+.sab-container{
+  width: 90%;
+  
+}
+.sab-table {
+    display: block;
+    width: 100%;
+   
+  }
+
+  .sab-table thead {
+    display: none;
+  }
+
+  .sab-table tbody,
+  .sab-table tr,
+  .sab-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .sab-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 0.5rem 0;
+  }
+
+  .sab-table td {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+.sab-table td::before {
+  content: attr(data-label) ":";
+  transition: 0.3s ease-in-out;
+  font-weight: 900;
+ 
+  color: #1e2b3c;
+  flex-shrink: 0; 
+}
+
+
+  /* Sub-content column layout */
+  .sab-sub-content {
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem;
+    width: 100%;
+   
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .sab-sub-content div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sab-sub-content strong {
+    color: #1e2b3c;
+    min-width: 80px;
+  }
+
+  .sab-sub-content a {
+    color: #007bff;
+    word-break: break-word;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .sab-container{
+    margin-left: 50px;
+    width:85%;
+  }
+  .sab-title {
+    font-size: 1.5rem;
+  }
+
+  .sab-fee-box,
+  .sab-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sab-fee-box input,
+  .sab-fee-box button,
+  .sab-filter-bar input,
+  .sab-filter-bar select {
+    width: 100%;
+  }
+
+  /* Table transforms into mobile-friendly stacked layout */
+  .sab-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .sab-table thead {
+    display: none;
+  }
+
+  .sab-table tbody,
+  .sab-table tr,
+  .sab-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .sab-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 0.5rem 0;
+  }
+
+  .sab-table td {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; 
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+.sab-table td::before {
+  content: attr(data-label) ":";
+  transition: 0.3s ease-in-out;
+  font-weight: 900;
+ 
+  color: #1e2b3c;
+  flex-shrink: 0; 
+}
+
+
+  /* Sub-content column layout */
+  .sab-sub-content {
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem;
+    width: 100%;
+    background-color: #eedfdf;
+    border-radius: 8px;
+   font-size: 16px;
+  }
+
+  .sab-sub-content div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sab-sub-content strong {
+    color: #1e2b3c;
+    min-width: 80px;
+  }
+
+  .sab-sub-content a {
+    color: #007bff;
+    word-break: break-word;
+  }
+}
+
+@media screen and (max-width: 650px) {
+   .sab-container {
+    margin-left: -22px;
+  }
+  .sab-table th,
+  .sab-table td {
+    padding: 0.6rem;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+.sab-container{
+  margin-left: 50px;
+  width: 78.4%;
+}
+.sab-table{
+  width: 104%;
+}
+}
+
+@media screen and (max-width: 430px){
+.sab-container{
+  margin-left: 50px;
+  width: 73%;
+  
+}
+.sab-table{
+  width: 99%;
+}
+}
+
+@media screen and (max-width: 414px) {
+  .sab-container{
+  margin-left: 50px;
+  width: 72%;
+  
+}
+.sab-table{
+  width: 101%;
+}
+  .sab-title {
+    font-size: 1.2rem;
+  }
+
+  .sab-table th,
+  .sab-table td {
+   font-size: 15px;
+    padding: 0.5rem;
+  }
+}
+@media screen and (max-width: 412px) {
+  .sab-container{
+  margin-left: 50px;
+  width: 71%;
+  
+}
+.sab-table{
+  width: 101%;
+}
+
+  .sab-title {
+    font-size: 1.2rem;
+  }
+
+  .sab-table th,
+  .sab-table td {
+    font-size: 15px;
+    padding: 0.4rem;
+  }
+}
+@media screen and (max-width: 375px) {
+.sab-container{
+  margin-left: 50px;
+  width: 70%;
+  
+}
+.sab-table{
+  width: 103%;
+}
+}
+
+
+
+@media screen and (max-width: 344px) {
+.sab-container{
+  margin-left: 45px;
+  width: 68%;
+  
+}
+.sab-table{
+  width: 103%;
+}
+}

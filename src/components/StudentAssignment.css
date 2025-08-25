@@ -1,0 +1,320 @@
+.student-assignment-wrapper {
+  padding: 1rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.student-assignment-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.student-assignment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.student-assignment-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.student-assignment-header {
+  background-color: #f5f5f5;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.student-assignment-details {
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+.student-assignment-details h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.student-assignment-details p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.student-assignment-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.student-assignment-textarea {
+  resize: vertical;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.student-assignment-file-input {
+  margin-top: 5px;
+}
+
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.student-assignment-submit-button:hover,
+.edit-button:hover,
+.preview-button:hover,
+.download-button:hover {
+  background-color: #2980b9;
+}
+
+.edit-button {
+  background-color: #f39c12;
+  margin-top: 10px;
+}
+
+.edit-button:hover {
+  background-color: #e67e22;
+}
+
+.pdf-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.file-preview {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.file-preview ul {
+  padding-left: 18px;
+}
+
+.submitted-info {
+  margin-top: 15px;
+  background-color: #eef5fa;
+  padding: 12px;
+  border-left: 4px solid #3498db;
+  border-radius: 4px;
+}
+
+.submitted-info ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.student-assignment-wrapper {
+  width: 87%;
+  margin-left: 65px;
+ 
+  
+}
+.student-assignment-title{
+font-size:25px;
+}
+.student-assignment-header{
+font-size:20px;
+}
+.student-assignment-details h3{
+font-size:20px;
+}
+.student-assignment-details p{
+font-size:20px;
+}
+.student-assignment-textarea{
+font-size:20px;
+}
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+font-size:20px;
+}
+}
+
+
+@media (max-width: 540px) {
+.student-assignment-wrapper {
+  width: 81%;
+  margin-left: 70px;
+}
+.student-assignment-title{
+font-size:23px;
+}
+.student-assignment-header{
+font-size:18px;
+}
+.student-assignment-details h3{
+font-size:18px;
+}
+.student-assignment-details p{
+font-size:18px;
+}
+.student-assignment-textarea{
+font-size:18px;
+width:95%;
+}
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+font-size:18px;
+}
+}
+
+
+@media (max-width: 430px) {
+.student-assignment-wrapper {
+  width: 76%;
+  
+}
+.student-assignment-title{
+font-size:19px;
+}
+}
+@media (max-width: 414px) {
+.student-assignment-wrapper {
+  width:74.1%;
+  
+ 
+} 
+}
+
+
+@media (max-width: 412px) {
+.student-assignment-wrapper {
+  width:75%;
+  
+ 
+  
+}
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+font-size:15px;
+}
+
+}
+
+@media (max-width: 390px) {
+.student-assignment-wrapper {
+  width: 73%;
+  
+ 
+  
+}
+
+.student-assignment-title{
+font-size:18px;
+}
+.student-assignment-header{
+font-size:15px;
+}
+.student-assignment-details h3{
+font-size:16px;
+}
+.student-assignment-details p{
+font-size:15px;
+}
+.student-assignment-textarea{
+font-size:15px;
+width:95%;
+}
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+font-size:15px;
+}
+}
+
+@media (max-width: 375px) {
+.student-assignment-wrapper {
+  width:72%;
+  
+ 
+} 
+}
+
+
+@media (max-width: 360px) {
+.student-assignment-wrapper {
+  width: 71%;
+  
+ 
+}
+}
+
+
+
+@media (max-width: 344px) {
+.student-assignment-wrapper {
+  width: 70%;
+  
+}
+
+.student-assignment-title{
+font-size:19px;
+}
+.student-assignment-header{
+font-size:15px;
+}
+.student-assignment-details h3{
+font-size:16px;
+}
+.student-assignment-details p{
+font-size:15px;
+}
+.student-assignment-textarea{
+font-size:15px;
+width:95%;
+}
+.student-assignment-submit-button,
+.edit-button,
+.preview-button,
+.download-button {
+font-size:12px;
+}
+}

@@ -1,0 +1,159 @@
+.stu-notifications-container {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.stu-notifications-container h2 {
+  margin-bottom: 16px;
+  color: #333333;
+  text-align: center;
+}
+
+.stu-mark-read-btn {
+  background-color: #007bff; /* primary */
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.stu-mark-read-btn:disabled {
+  background-color: #6c757d; /* gray disabled */
+  cursor: not-allowed;
+}
+
+.stu-mark-read-btn:hover:not(:disabled) {
+  background-color: #0056b3; /* darker hover */
+}
+
+.stu-notifications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stu-notification-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+  border-left: 5px solid transparent;
+}
+
+.stu-notification-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.stu-unread {
+  font-weight: bold;
+  background-color: #e6f0ff; /* light blue */
+  border-left-color: #007bff; /* highlight blue */
+}
+
+.stu-read {
+  color: #777777;
+}
+
+.stu-info {
+  border-left-color: #17a2b8;
+}
+
+.stu-warning {
+  border-left-color: #ffc107;
+}
+
+.stu-error {
+  border-left-color: #dc3545;
+}
+
+.stu-success {
+  border-left-color: #28a745;
+}
+
+.stu-notification-item p {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+}
+
+.stu-notification-item small {
+  color: #999999;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .stu-notifications-container {
+    width: 83%; 
+    margin-left: 60px;  
+    margin-top: -25px;
+  }
+
+}
+
+
+@media (max-width: 540px) {
+  .stu-notifications-container {
+    margin-top: -20px;
+    margin-left: 55px;
+    width: 78%;   
+  }
+}
+
+@media (max-width: 430px) {
+  .stu-notifications-container {
+    width: 71%;   
+    margin-top: -25px;
+  }
+
+}
+
+
+@media (max-width: 414px) {
+  .stu-notifications-container {
+    width: 70%;   
+    margin-top: -25px;
+  }
+
+}
+
+@media (max-width: 390px) {
+  .stu-notifications-container {
+    width: 69%;   
+    margin-top: -25px;
+  }
+
+}
+@media (max-width: 375px) {
+  .stu-notifications-container {
+    width: 68%;   
+    margin-top: -25px;
+  }
+
+}
+
+@media (max-width: 360px) {
+  .stu-notifications-container {
+    width: 67%;   
+    margin-top: -25px;
+  }
+
+}
+
+@media (max-width: 344px) {
+  .stu-notifications-container {
+    width: 65%;   
+    margin-top: -25px;
+  }
+
+}

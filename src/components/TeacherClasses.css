@@ -1,0 +1,342 @@
+/* Container */
+.teacher-classes-container {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  
+}
+
+/* Heading */
+.teacher-classes-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Course Buttons List */
+.teacher-classes-course-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Course Button */
+.teacher-classes-course-btn {
+  flex: 1 1 250px;
+  padding: 1rem 1.25rem;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e2b3c;
+}
+
+.teacher-classes-course-btn:hover {
+  background-color: #e9f1fb;
+  border-color: #007bff;
+}
+
+.teacher-classes-course-btn.selected {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #0056b3;
+}
+
+/* Status Badge */
+.teacher-classes-status {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-left: 0.75rem;
+  white-space: nowrap;
+}
+
+.teacher-classes-status.pending {
+  background-color: #f39c12;
+  color: #ffffff;
+}
+
+.teacher-classes-status.approved {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.teacher-classes-status.rejected {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.teacher-classes-status.submitted {
+  background-color: #17a2b8;
+  color: #ffffff;
+}
+
+/* Student Table */
+.teacher-classes-student-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.teacher-classes-student-table th,
+.teacher-classes-student-table td {
+  border: 1px solid #e0e0e0;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.teacher-classes-student-table th {
+  background-color: #f1f3f6;
+  font-weight: 600;
+  color: #1e2b3c;
+}
+
+.teacher-classes-student-table tr:hover {
+  background-color: #f8fbff;
+}
+
+/* Inputs & Selects */
+.teacher-classes-student-table input,
+.teacher-classes-student-table select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.teacher-classes-student-table input:focus,
+.teacher-classes-student-table select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.teacher-classes-student-table input:read-only {
+  background-color: #f5f5f5;
+  color: #555;
+}
+
+/* Submit Button */
+.teacher-classes-submit-btn {
+  padding: 0.9rem 2rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.teacher-classes-submit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.teacher-classes-submit-btn:disabled {
+  background-color: #b6d4fe;
+  color: #f1f1f1;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+
+  .teacher-classes-container{
+    width: 93%;
+    /* margin-left: 10px; */
+  }
+  .teacher-classes-course-btn {
+    flex: 1 1 30%;
+  }
+  .teacher-classes-student-table{
+    width: 100%;
+  }
+
+  .teacher-classes-student-table th,
+  .teacher-classes-student-table td {
+    font-size: 14px;
+    
+  }
+
+   
+}
+
+@media (max-width: 912px) {
+
+  .teacher-classes-container{
+    width: 92%;
+    /* margin-left: 10px; */
+  }
+  .teacher-classes-course-btn {
+    flex: 1 1 30%;
+  }
+  .teacher-classes-student-table{
+    width: 100%;
+  }
+
+  .teacher-classes-student-table th,
+  .teacher-classes-student-table td {
+    font-size: 14px;
+    
+  }
+
+   
+}
+
+
+@media (max-width: 768px) {
+
+  .teacher-classes-container{
+    width: 85%;
+    margin-left: 50px;
+  }
+  .teacher-classes-course-list {
+    flex-direction: column;
+  }
+
+  .teacher-classes-course-btn {
+    width: 100%;
+  }
+
+  .teacher-classes-student-table {
+    font-size: 0.85rem;
+    overflow-x: auto;
+  }
+
+  .teacher-classes-submit-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 540px) {
+
+  .teacher-classes-container{
+    width: 78%;
+    margin-left: 55px;
+  }
+}
+
+@media (max-width: 430px) {
+
+  .teacher-classes-container{
+    width: 72%;
+    margin-left: 55px;
+  }
+}
+
+@media (max-width: 414px) {
+
+  .teacher-classes-container{
+    width: 71%;
+    margin-left: 55px;
+  }
+}
+
+@media (max-width: 390px) {
+
+  .teacher-classes-container{
+    width: 69%;
+    margin-left: 55px;
+  }
+}
+@media (max-width: 375px) {
+
+  .teacher-classes-container{
+    width: 68%;
+    margin-left: 55px;
+  }
+}
+@media (max-width: 360px) {
+
+  .teacher-classes-container{
+    width: 67%;
+    margin-left: 55px;
+  }
+}
+
+@media (max-width: 344px) {
+
+  .teacher-classes-container{
+    width: 65%;
+    margin-left: 55px;
+  }
+}
+
+
+/* RESPONSIVE COLUMN VIEW ON SMALL SCREENS */
+@media (max-width: 768px) {
+  
+  .teacher-classes-student-table thead,
+.teacher-classes-student-table tbody,
+  .teacher-classes-student-table th,
+  .teacher-classes-student-table td,
+  .teacher-classes-student-table tr {
+    display: block;
+    
+    
+  }
+
+  .teacher-classes-student-table thead {
+    display: none;
+    width: 100%;
+  }
+
+  .teacher-classes-student-table tr {
+    /* margin-bottom: 1rem; */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+   width: 100%; 
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  }
+
+  .teacher-classes-student-table td {
+    text-align: left;
+    position: relative;
+    padding-left: 40%;
+    
+  }
+
+  .teacher-classes-student-table td::before {
+    position: absolute;
+    left: 0.75rem;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #555;
+  }
+
+  .teacher-classes-student-table td:nth-of-type(1)::before { content: "Student ID"; }
+  .teacher-classes-student-table td:nth-of-type(2)::before { content: "Name"; }
+  .teacher-classes-student-table td:nth-of-type(3)::before { content: "Department"; }
+  .teacher-classes-student-table td:nth-of-type(4)::before { content: "Level"; }
+  .teacher-classes-student-table td:nth-of-type(5)::before { content: "Score"; }
+  .teacher-classes-student-table td:nth-of-type(6)::before { content: "Grade"; }
+  .teacher-classes-student-table td:nth-of-type(7)::before { content: "Point"; }
+  .teacher-classes-student-table td:nth-of-type(8)::before { content: "Semester"; }
+  .teacher-classes-student-table td:nth-of-type(9)::before { content: "Unit"; }
+  .teacher-classes-student-table td:nth-of-type(10)::before { content: "Code"; }
+}

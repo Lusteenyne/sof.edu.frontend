@@ -1,0 +1,282 @@
+/* Container */
+.sas-superadmin-students {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.sas-students-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.sas-students-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+.sas-profile-photo img{
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background-color: #333;
+   box-shadow: 0 2px 6px rgb(0, 0, 0);
+}
+.sas-edit-controls button{
+padding: 0.4rem 0.6rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #333;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+
+}
+
+.sas-students-header input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px;
+  max-width: 100%;
+}
+
+/* Table */
+.sas-students-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.sas-students-table th,
+.sas-students-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #eee;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.sas-students-table th {
+  background-color: #1e2b3c;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Action buttons */
+.sas-action-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.sas-view-btn,
+.sas-delete-btn {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+}
+
+.sas-view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.sas-view-btn:hover {
+  background-color: #0056b3;
+}
+
+.sas-delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.sas-delete-btn:hover {
+  background-color: #b52a37;
+}
+
+/* Responsive Layouts */
+
+/* ≤ 1020px */
+@media (max-width: 1020px) {
+
+  .sas-superadmin-students {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  margin-left:-32px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+  .sas-students-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sas-students-header input {
+    width: 90%;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 912px) {
+
+  .sas-superadmin-students {
+  margin-left: 1px;
+}
+.sas-students-table{
+margin-left: -12px;
+}
+}
+
+/* ≤ 768px */
+@media (max-width: 768px) {
+  .sas-students-table th:nth-child(3),
+  .sas-students-table td:nth-child(3),
+  .sas-students-table th:nth-child(4),
+  .sas-students-table td:nth-child(4),
+  .sas-students-table th:nth-child(5),
+  .sas-students-table td:nth-child(5) {
+    display: none;
+  }
+
+  .sas-superadmin-students{
+    margin-left: 50px;
+  }
+  .sas-students-table{
+    width: 105%;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .sas-view-btn,
+  .sas-delete-btn {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* ≤ 650px */
+@media (max-width: 660px) {
+  
+  .sas-students-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.85rem;
+  }
+}
+@media (max-width: 540px) {
+.sas-students-table{
+    width: 109%;
+  }
+}
+
+@media (max-width: 430px) {
+.sas-students-table{
+    width: 112%;
+  }
+}
+/* ≤ 414px */
+@media (max-width: 414px) {
+   .sas-superadmin-students{
+    margin-left: 50px;
+   }
+   
+  .sas-students-header {
+    gap: 0.5rem;
+  }
+
+  .sas-students-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .sas-view-btn,
+  .sas-delete-btn {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .sas-students-table{
+    width: 116%;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .sas-superadmin-students{
+    margin-left: 50px;
+   }
+  .sas-students-header h2 {
+    font-size: 1rem;
+  }
+   .sas-students-header input {
+    width: 85%;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.7rem;
+  }
+
+  .sas-view-btn,
+  .sas-delete-btn {
+    font-size: 0.65rem;
+  }
+}
+
+/* ≤ 320px */
+@media (max-width: 320px) {
+  .sas-students-header input {
+    font-size: 0.8rem;
+  }
+
+  .sas-students-table th,
+  .sas-students-table td {
+    font-size: 0.65rem;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .sas-view-btn,
+  .sas-delete-btn {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.3rem;
+  }
+}

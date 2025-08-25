@@ -1,0 +1,64 @@
+.sps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8fc;
+  height: 100vh;
+  padding: 20px;
+}
+
+.sps-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #0066cc;
+}
+
+.sps-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0066cc;
+  margin-bottom: 20px;
+}
+
+.sps-message {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.sps-message strong {
+  color: #0066cc;
+}
+
+.sps-note {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.sps-redirect {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+.sps-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #0066cc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

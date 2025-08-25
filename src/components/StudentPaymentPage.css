@@ -1,0 +1,481 @@
+.spp-container {
+  width:94%;
+  margin: 0 auto;
+  
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafa;
+  color: #333;
+}
+
+.spp-header {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+  text-align: center;
+}
+
+.spp-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #444;
+  text-align: center;
+}
+
+.spp-note {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.spp-summary h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+ color: #1e3a8a;
+}
+
+.spp-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.spp-table {
+  width: 100%;
+   
+  border-collapse: collapse;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  min-width: 600px;
+}
+
+.spp-table th,
+.spp-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.spp-table th {
+   background-color: #1e2b3c;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.spp-table tr:hover {
+  background-color: #f3f4f6;
+}
+
+.spp-empty {
+  text-align: center;
+  padding: 1rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.spp-extra {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.spp-acceptance {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.spp-btn,
+.spp-paystack-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.spp-btn:hover,
+.spp-paystack-btn:hover {
+  background-color: #1e40af;
+}
+
+.spp-paystack-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.spp-paystack-logo {
+  height: 20px;
+  vertical-align: middle;
+}
+
+.spp-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-top: 3px solid #2563eb;
+  border-radius: 50%;
+  animation: spp-spin 0.6s linear infinite;
+}
+
+@keyframes spp-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spp-upload label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.spp-upload input[type="file"] {
+  margin-bottom: 0.75rem;
+}
+
+.spp-upload p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------- RESPONSIVENESS ---------------------- */
+@media (max-width: 1300px) {
+  .spp-container {
+  height: 83vh;
+  }
+  .spp-header {
+    font-size: 30px;
+  }
+
+  .spp-name,
+  .spp-note {
+    font-size: 19px;
+  }
+
+  .spp-summary h2 {
+    font-size: 24px;
+  }
+
+  .spp-table {
+    font-size: 18px;
+  }
+
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 18px;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .spp-container {
+    padding: 1rem;
+  }
+
+  .spp-upload label {
+    font-size: 18px;
+  }
+
+  .spp-acceptance {
+    font-size: 18px;
+  }
+  .spp-upload p {
+    font-size: 0.85rem;
+  }
+  .spp-info{
+    font-size: 18px;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .spp-container {
+  height: 99vh;
+  width: 95%;
+  }
+.spp-header {
+    font-size: 30px;
+  }
+
+  .spp-name,
+  .spp-note {
+    font-size: 24px;
+  }
+
+  .spp-summary h2 {
+    font-size: 30px;
+  }
+
+  .spp-table {
+    font-size: 24px;
+  }
+
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 24px;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .spp-container {
+    padding: 1rem;
+  }
+
+  .spp-upload label {
+    font-size: 24px;
+  }
+
+  .spp-acceptance {
+    font-size: 24px;
+  }
+  .spp-upload p {
+    font-size: 0.85rem;
+  }
+  .spp-info{
+    font-size: 24px;
+  }
+}
+@media (max-width: 853px) {
+ .spp-container {
+  margin-left: 25px;
+  width: 92%; 
+  height: 93vh;
+ 
+  }
+}
+
+
+@media (max-width: 820px) {
+ .spp-container {
+  margin-left:25px;
+  width: 92%; 
+  height: 93vh;
+ 
+  }
+}
+
+
+
+@media (max-width: 768px) {
+ .spp-container {
+  margin-left:60px;
+  width: 88%;
+   
+  }
+
+  .spp-header {
+    font-size: 25px;
+  }
+
+  .spp-name,
+  .spp-note {
+    font-size: 19px;
+  }
+
+  .spp-summary h2 {
+    font-size: 24px;
+  }
+
+  .spp-table {
+    font-size: 18px;
+  }
+
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 18px;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .spp-container {
+    padding: 1rem;
+  }
+
+  .spp-upload label {
+    font-size: 18px;
+  }
+
+  .spp-acceptance {
+    font-size: 18px;
+  }
+  .spp-upload p {
+    font-size: 0.85rem;
+  }
+  .spp-info{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+ .spp-container {
+  width: 82%; 
+  height: 86vh;
+  }
+  .spp-header {
+    font-size: 20px;
+  }
+
+  .spp-name,
+  .spp-note {
+    font-size: 15px;
+  }
+
+  .spp-summary h2 {
+    font-size: 20px;
+  }
+ 
+  .spp-table {
+    font-size: 15px;
+    margin-left: 5px;
+
+  }
+
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 15px;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .spp-container {
+    padding: 1rem;
+  }
+
+  .spp-upload label {
+    font-size: 15px;
+  }
+
+  .spp-acceptance {
+    font-size: 15px;
+  }
+  .spp-upload p {
+    font-size: 0.85rem;
+  }
+  .spp-info{
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 430px) {
+ .spp-container {
+  margin-left: 60px;
+  width: 78%; 
+  height: 90vh;
+  }
+}
+
+
+
+@media (max-width: 414px) {
+ .spp-container {
+  margin-left: 55px;
+  width : 78%; 
+  height: 86vh;
+
+  }
+  .spp-header {
+    font-size: 23px;
+  }
+
+  .spp-name,
+  .spp-note {
+    font-size: 18px;
+  }
+  .spp-summary h2 {
+    font-size: 23px;
+  }
+ .spp-table-wrapper{
+  margin-left:5px;
+ }
+  .spp-table {
+    font-size: 18px;
+   
+
+  }
+
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 18px;
+    padding: 0.6rem 1.2rem;
+    margin-left: 5px;
+  }
+
+  .spp-container {
+    padding: 1rem;
+  }
+
+  .spp-upload label {
+    font-size: 18px;
+  }
+
+  .spp-acceptance {
+    font-size: 18px;
+  }
+  .spp-upload p {
+    font-size: 0.85rem;
+  }
+  .spp-info{
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 415px) {
+ .spp-container {
+  margin-left:60px;
+  width: 77%; 
+  height: 92vh;
+ 
+  }}
+
+@media (max-width: 390px) {
+ .spp-container {
+  /* margin-left:60px;
+  width: 75%;  */
+  height: 93vh;
+ 
+  }
+  
+}
+
+@media (max-width: 375px) {
+ .spp-container {
+  margin-left:60px;
+  width: 75%; 
+  height: 93vh;
+ 
+  }
+  .spp-paystack-btn,
+  .spp-btn {
+    font-size: 15px;
+    padding: 0.4rem 0.9rem;
+    margin-left: 2px;
+  }
+}
+
+@media (max-width: 360px) {
+ .spp-container {
+  width:74%;
+  height: 97vh;
+ 
+  }}

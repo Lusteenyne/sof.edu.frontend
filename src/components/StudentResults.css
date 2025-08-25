@@ -1,0 +1,336 @@
+/* Container */
+.sr-container {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.sr-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #2c5282;
+}
+
+.sr-student-id {
+  text-align: center;
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+}
+
+/* Subtitle */
+.sr-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+/* Table Container */
+.sr-table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+}
+
+/* Table */
+.sr-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.sr-table th,
+.sr-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sr-table thead th {
+  background-color: #f7fafc;
+  color: #2c5282;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.sr-table tbody tr:hover {
+  background-color: #edf2f7;
+}
+
+/* Outstanding Courses */
+.sr-outstanding h3 {
+  margin-bottom: 0.5rem;
+  color: #c53030;
+  font-weight: 600;
+}
+
+.sr-outstanding ul {
+  padding-left: 1.25rem;
+  list-style-type: disc;
+  margin: 0;
+}
+
+.sr-outstanding li {
+  color: #2d3748;
+  margin-bottom: 0.25rem;
+}
+
+.sr-outstanding p {
+  color: #38a169;
+}
+
+/* CGPA */
+.sr-cgpa {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #ebf8ff;
+  border-left: 4px solid #3182ce;
+  color: #2c5282;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 6px;
+}
+
+/* ─────────── Responsive Table to Card Style ─────────── */
+@media (max-width: 1300px){
+.sr-container{
+  height: 83vh;
+}
+}
+
+@media (max-width: 1024px){
+.sr-container{
+  width: 93%;
+   height: 90vh;
+}
+}
+@media (max-width: 860px){
+.sr-container{
+  height: 89vh;
+}
+}
+
+@media (max-width: 820px){
+.sr-container{
+  height: 89vh;
+  width: 92%;
+}
+}
+
+
+@media (max-width: 768px){
+  .sr-container {
+    margin-left: 40px;
+    width: 86%;
+  }
+}
+
+@media (max-width: 540px) {
+  .sr-container {
+  margin-left: 40px;
+  width: 80%;
+  
+ 
+  height: auto;
+}
+
+.sr-table-container {
+ width: 106%;
+
+}
+
+.sr-table {
+  display: block;
+  
+  width: 100%;
+  
+}
+
+.sr-table thead,
+.sr-table tbody, 
+.sr-table th,
+.sr-table td,
+.sr-table tr {
+  display: block;
+  width: 97%;
+}
+
+.sr-table thead {
+  text-align: center;
+  margin-bottom: 1rem;
+ 
+   width: 99%;
+  
+}
+
+.sr-table thead th {
+  text-align: center;
+  /* vertical-align: middle; */
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c5282;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.sr-table tbody {
+  text-align: left;
+}
+
+.sr-table tbody tr {
+  background-color: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 94%;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.sr-table td {
+  
+   text-align: center;
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+}
+
+.sr-table td::before {
+  content: attr(data-label);
+  font-weight: 600;
+  text-align: center;
+  color: #2c5282;
+  
+  display: inline-block;
+}
+}
+
+@media (max-width: 430px) {
+  .sr-container {
+  margin-left: 42px;
+  width: 77%;
+  
+ 
+  height: auto;
+}
+
+
+}
+
+@media (max-width: 414px) {
+  .sr-container {
+  margin-left: 42px;
+  width: 73%;
+  height: auto;
+}
+
+.sr-table-container {
+ width: 109%;
+ /* border: 2px red solid; */
+
+}
+.sr-table tbody tr{
+width: 90%;
+}
+
+.sr-table thead {
+ 
+ 
+   width: 95%;
+  
+}
+
+
+}
+
+@media (max-width: 390px) {
+  .sr-container {
+  margin-left: 42px;
+  width: 72%;
+  height: auto;
+}
+
+.sr-table-container {
+ width: 112%;
+ /* border: 2px red solid; */
+
+}
+.sr-table tbody tr{
+width: 89%;
+}
+
+.sr-table thead {
+ 
+ 
+   width: 95%;
+  
+}
+}
+
+@media (max-width: 380px) {
+  .sr-container {
+  margin-left: 30px;
+  width: 75%;
+  height: auto;
+}
+
+.sr-table-container {
+ width: 111%;
+ /* border: 2px red solid; */
+
+}
+.sr-table tbody tr{
+width: 89%;
+
+}
+
+.sr-table thead {
+ 
+ /* border: 2px red solid; */
+   width: 93%;
+  
+}
+}
+
+@media (max-width: 375px) {
+  .sr-container {
+  margin-left: 41px;
+  width: 72%;
+  height: auto;
+}
+
+.sr-table-container {
+ width: 112%;
+ /* border: 2px red solid; */
+
+}
+.sr-table tbody tr{
+width: 89%;
+
+}
+
+.sr-table thead {
+ 
+ /* border: 2px red solid; */
+   width: 94%;
+  
+}
+}
+
+@media (max-width: 360px) {
+  .sr-container {
+  margin-left: 41px;
+  width: 71%;
+  height: auto;
+}
+}
+@media (max-width: 344px) {
+  .sr-container {
+  margin-left: 41px;
+  width: 70%;
+ 
+}
+}

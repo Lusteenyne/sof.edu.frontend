@@ -1,0 +1,74 @@
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: radial-gradient(circle, #0e0e10, #1a1a1d); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+ 
+}
+
+.spinner-logo {
+  width: 80px;
+  margin-bottom: 20px;
+  
+}
+
+.futuristic-spinner {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  animation: rotateSpinner 2s linear infinite;
+}
+
+.spinner-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.spinner-ring {
+  stroke-dasharray: 282;
+  stroke-dashoffset: 0;
+  stroke-opacity: 0.1;
+}
+
+.spinner-track {
+  stroke-linecap: round;
+  stroke-dasharray: 282;
+  stroke-dashoffset: 75;
+  animation: spinStroke 1.5s ease-in-out infinite;
+}
+
+.spinner-text {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #00f0ff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+@keyframes rotateSpinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinStroke {
+  0% {
+    stroke-dashoffset: 282;
+  }
+  50% {
+    stroke-dashoffset: 75;
+  }
+  100% {
+    stroke-dashoffset: 282;
+  }
+}

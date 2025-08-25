@@ -1,0 +1,529 @@
+.teacher-chat-container {
+ display: flex;
+  position: fixed;
+  margin-top: -10px;
+  left: 0;
+  margin-left: 60px;
+  height: 100vh;
+  width: 97%;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fbfe;
+  z-index: 999;
+
+}
+
+.teacher-chat-sidebar {
+  width: 280px;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #333;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.teacher-chat-search {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.teacher-user-group-header {
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: #444;
+  padding: 6px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.teacher-chat-user-list {
+  padding-left: 0.5rem;
+}
+
+.teacher-chat-user-item {
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  cursor: pointer;
+  background: #f2f2f2;
+  transition: background 0.2s ease-in-out;
+}
+
+.teacher-chat-user-item:hover {
+  background: #e0e0e0;
+}
+
+.teacher-chat-user-item.selected {
+  background: #cce4ff;
+}
+
+.teacher-chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+   overflow: hidden;
+  background: #fff;
+  height: 91vh;
+  
+}
+
+.teacher-chat-header {
+   flex-shrink: 0;
+  padding: 1rem;
+  background: #1e2b3c;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-bottom: 2px solid #0f172a;
+  
+}
+
+.teacher-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  
+}
+
+/* Bubble styles */
+.teacher-chat-bubble {
+  max-width: 40%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-word;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-chat-bubble.teacher {
+  align-self: flex-end;
+  background-color: #e0f3ff;
+  border-left: 4px solid #3399ff;
+  color: #002b45;
+}
+
+.teacher-chat-bubble.admin {
+  background-color: rgb(197, 193, 255);
+  border-left: 4px solid blue;
+ color: black;
+}
+
+.teacher-chat-bubble.student {
+   align-self: flex-start;
+  background-color:rgb(186, 190, 252);
+  border-left: 4px solid blue;
+  color: black;
+}
+
+/* Text & Meta */
+.teacher-chat-meta {
+  font-size: 12px;
+  color: black;
+  margin-bottom: 4px;
+}
+
+.teacher-chat-text {
+  font-size: 14px;
+  color: inherit;
+}
+
+/* Input Area */
+.teacher-chat-input-area {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #ccc;
+  background: #f8f8f8;
+  gap: 8px;
+   width: 96%;
+}
+
+.teacher-chat-input-area input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.teacher-chat-input-area button {
+  padding: 10px 14px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.teacher-chat-input-area button:hover {
+  background: #005fa3;
+}
+
+/* Dropdown Menu for Eye Icon */
+.teacher-chat-actions {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.dropdown-icon {
+  cursor: pointer;
+  color: #666;
+  font-size: 16px;
+  padding: 4px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+}
+
+.dropdown-menu button {
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  width: 100%;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu button.delete {
+  color: #b10000;
+}
+
+.dropdown-menu button.delete:hover {
+  background-color: #ffe3e3;
+}
+
+/* Responsive */
+
+@media (max-width: 1300px) {
+
+.teacher-chat-container {
+ width: 95%;
+}
+.teacher-chat-main{
+  height: 94vh ;
+}
+.teacher-chat-sidebar{
+  height: 93vh;
+}
+.teacher-chat-meta {
+  font-size: 19px;
+  font-weight: bolder;
+ 
+}
+
+.teacher-chat-text {
+  font-size: 19px;
+  
+}
+.teacher-user-group-header {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.teacher-chat-user-list {
+  font-size: 19px;
+}
+
+}
+@media (max-width: 1240px) {
+.teacher-chat-main{
+  height: 91vh ;
+}
+
+}
+@media (max-width: 1024px) {
+
+  .teacher-chat-container{
+    height: 95vh;
+  }
+.teacher-chat-main{
+  height: 96vh ;
+  
+}
+
+
+.teacher-chat-meta {
+  font-size: 19px;
+  font-weight: bolder;
+ 
+}
+
+.teacher-chat-text {
+  font-size: 19px;
+  
+}
+.teacher-user-group-header {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.teacher-chat-user-list {
+  font-size: 19px;
+}
+
+
+}
+
+
+@media (max-width: 912px){
+  .teacher-chat-main{
+    height: 95vh;
+  }
+  .teacher-chat-container{
+  height: 95vh;
+}
+.teacher-chat-bubble {
+    max-width: 70%;
+  }
+.teacher-chat-sidebar{
+  margin-left: 6px;
+}
+.teacher-chat-input-area{
+  width: 93%;
+  
+  }
+
+}
+@media (max-width: 820px){
+
+.teacher-chat-bubble {
+    max-width: 90%;
+  }
+
+  .teacher-chat-input-area{
+  width: 91%;
+  }
+  
+}
+
+
+
+@media (max-width: 768px) {
+  .teacher-chat-container {
+    flex-direction: column;
+   
+    height: 95vh;
+    width: 93%;
+    margin-left: 49px;
+  }
+.teacher-chat-search{
+  width: 95%;
+
+}
+  .teacher-chat-sidebar {
+    width: 95%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .teacher-chat-main {
+   width: 100%;
+   margin-left: 5px;
+  }
+
+.teacher-chat-input-area{
+  width: 96%;
+  margin-left: 2px;
+}
+
+  .teacher-chat-input-area input {
+  width: 90%;
+  }
+
+  
+  .teacher-chat-input-area button {
+    width: 20%;
+  }
+
+  .teacher-chat-bubble {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 650px){
+
+}
+
+@media (max-width: 540px){
+.teacher-chat-container{
+  margin-left: 50px;
+ 
+  width: 90%;
+  height: 93vh;
+}
+.teacher-chat-search{
+  width: 80%;
+
+}
+  .teacher-chat-sidebar {
+    width: 95%;
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+ 
+
+  .teacher-chat-input-area input {
+  width: 90%;
+  
+  }
+
+  
+  .teacher-chat-input-area button {
+    width: 20%;
+  }
+
+  .teacher-chat-bubble {
+    max-width: 60%;
+  }
+  .teacher-chat-meta {
+  font-size: 15px;
+  font-weight: bolder;
+ 
+}
+
+.teacher-chat-text {
+  font-size: 15px;
+  
+}
+.teacher-user-group-header {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.teacher-chat-user-list {
+  font-size: 15px;
+}
+
+}
+@media (max-width: 430px){
+  .teacher-chat-container{
+  width: 89%;
+  height: 94vh;
+}
+.teacher-chat-input-area {
+  width: 92%;
+  
+  }
+
+}
+
+
+@media (max-width: 375px){
+.teacher-chat-container{
+ 
+  height: 94vh;
+}
+
+
+.teacher-chat-sidebar {
+   
+    height: 150px;
+    
+  }
+  .teacher-chat-bubble {
+    max-width: 50%;
+  }
+  .teacher-chat-meta {
+  font-size: 13px;
+  font-weight: bolder;
+ 
+}
+
+.teacher-chat-text {
+  font-size: 13px;
+  
+}
+.teacher-user-group-header {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.teacher-chat-user-list {
+  font-size: 13px;
+}
+  .teacher-chat-input-area {
+    width: 90%;
+    margin-left: 2px;
+  }
+
+
+}
+@media (max-width: 344px){
+  .teacher-chat-messages{
+    margin-left: -3px;
+    width: 88%;
+  }
+}
+
+/* Unread badge */
+.unread-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: red;
+  border-radius: 50%;
+  margin-left: 6px;
+}
+
+.unread-badge {
+  background-color: red;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 6px;
+}
+.teacher-chat-date-label {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #777;
+  position: relative;
+}
+

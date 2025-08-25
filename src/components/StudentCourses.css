@@ -1,0 +1,665 @@
+/* Container */
+.student-courses-container {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.student-courses-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.student-info-card {
+  background-color: #f7f9fc;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid #3498db;
+  margin-bottom: 2rem;
+}
+
+.student-info-card p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.student-courses-section h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-left: 4px solid #3498db;
+  padding-left: 0.5rem;
+}
+
+.student-courses-list,
+.selected-courses-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.student-courses-list li,
+.selected-courses-list li {
+  background-color: #ecf0f1;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student-courses-list button,
+.selected-courses-list button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s ease;
+}
+
+.student-courses-list button:hover,
+.selected-courses-list button:hover {
+  background-color: #2980b9;
+}
+
+.submit-button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #27ae60;
+}
+
+/* Table Style */
+.student-courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.student-courses-table th,
+.student-courses-table td {
+  padding: 0.9rem;
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+.student-courses-table th {
+  background-color: #1e2b3c;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.student-courses-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.approved {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.pending {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.course-summary {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: right;
+  color: #2c3e50;
+}
+
+/* Responsive Table to Cards */
+@media (max-width: 1300px) {
+ .student-courses-container{
+    
+    height: 87vh;
+  }
+  .student-info-card p {
+
+  font-size: 20px;
+  
+}
+.student-courses-section{
+   font-size: 20px;
+}
+.course-summary{
+  font-size: 20px;
+}
+
+
+.student-courses-table td {
+  
+  font-size: 20px;
+  
+}
+
+
+}
+
+@media (max-width: 1024px) {
+  .student-courses-container{
+    
+    width: 93%;
+    height: 91vh;
+  }
+  .student-courses-container h2{
+  font-size: 20px;
+}
+
+.student-info-card p {
+
+  font-size: 20px;
+  
+}
+.student-courses-section{
+   font-size: 20px;
+}
+
+
+.student-courses-table td {
+  
+  font-size: 20px;
+  
+}
+
+
+
+}
+
+@media (max-width: 820px) {
+  .student-courses-container{
+    
+    width: 91%;
+    height: 89vh;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .student-courses-container{
+    margin-left: 40px;
+    width: 86.4%;
+    height: 88vh;
+  }
+
+  .student-info-card {
+  width: 96%;
+ 
+}
+.student-info-card p {
+  
+  font-size: 18px;
+  
+}
+.student-courses-section{
+  width: 104%;
+}
+.student-courses-list{
+  font-size: 18px;
+}
+ 
+.student-courses-table{
+  width: 103%;
+  margin-left: 5px;
+}
+  .student-courses-table thead {
+    display: none;
+  }
+
+  .student-courses-table tr {
+    margin-bottom: 1rem;
+    background-color: #ecf0f1;
+  
+    padding: 1rem;
+    
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+
+ .student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  padding: 8px 0;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+  color: #2c3e50;
+  min-width: 140px;      /* Ensures consistent label width */
+  margin-right: 40%;    /* Spacing between label and value */
+  display: inline-block;
+}
+
+
+  .course-summary {
+    text-align: left;
+    font-size: 18px;
+    
+  }
+}
+
+
+@media (max-width: 540px) {
+.student-courses-container{
+  width: 80%;
+  margin-left: 40px;
+  height: 86vh;
+  
+}
+.student-courses-container h2{
+  font-size: 20px;
+}
+.student-info-card {
+  width: 96%;
+  
+ 
+}
+.student-info-card p {
+  margin-left: -10px;
+  font-size: 15px;
+  
+}
+.student-courses-section{
+  width: 105%;
+
+}
+
+.student-courses-table{
+  width: 106%;
+  /* margin-left: -10px; */
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  margin-left: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  padding: 8px 0;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+
+  color: #2c3e50;
+  min-width: 120px;
+   font-size: 15px;
+  margin-right: 30%; /* Adjusted for better spacing */
+  display: inline-block;
+}
+
+}
+
+@media (max-width: 430px){
+.student-courses-container{
+  width: 75%;
+  margin-left: 40px;   
+}
+.student-info-card {
+  width: 90%;
+}
+.student-info-card p {
+ 
+  font-size: 17px;
+  
+}
+
+.student-courses-section{
+  
+  font-size: 17px;
+}
+.student-courses-table{
+  width: 105%;
+
+}
+
+.student-courses-list{
+  font-size: 17px;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 17px;
+ 
+ width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+font-size: 17px;
+  color: #2c3e50;
+margin-right: 10%;
+
+  display: inline-block;
+}
+
+
+
+}
+@media (max-width: 414px){
+.student-courses-container{
+  width: 78%;
+  /* margin-left: 20px;       */
+}
+.student-info-card {
+  width: 90%;
+}
+.student-info-card p {
+ 
+  font-size: 16px;
+  
+}
+
+.student-courses-section{
+  
+  font-size: 16px;
+}
+.student-courses-table{
+  width: 105%;
+
+}
+
+.student-courses-list{
+  font-size: 16px;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+ 
+ width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+font-size: 16px;
+  color: #2c3e50;
+margin-right: 10%;
+  display: inline-block;
+}
+
+.course-summary {
+    text-align: left;
+    font-size: 15px;
+    margin-top: 10px;
+    
+  }
+}
+
+@media (max-width: 412px){
+
+  .student-courses-container{
+    margin-left: 40px;
+    width: 73.5%;
+  }
+.student-courses-table{
+  width: 115%;
+}
+.student-courses-section{
+  width: 110%;
+  font-size: 16px;
+}
+.student-courses-list{
+  font-size: 15px;
+}
+.student-info-card {
+  width: 90%;
+}
+.student-info-card p {
+ 
+  font-size: 16px;
+  
+}
+
+.student-courses-table{
+  width: 105%;
+
+}
+
+.student-courses-list{
+  font-size: 16px;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+ 
+ width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+font-size: 16px;
+  color: #2c3e50;
+margin-right: 10%;
+  display: inline-block;
+}
+
+
+
+}
+
+@media (max-width: 390px){
+.student-courses-container{
+  width: 73%;
+  height: 100vh ;
+  /* margin-left: 20px;       */
+}
+.student-courses-table{
+  width: 108%;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+ margin-left: px;
+ width: 83%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+
+  color: #2c3e50;
+ font-size: 14px;
+  display: inline-block;
+}
+
+}
+
+
+@media (max-width: 380px) {
+.student-courses-container{
+  width: 72%;
+  height: 114vh;
+  margin-left: 40px;
+  
+}
+.student-courses-container h2{
+  font-size: 20px;
+}
+.student-info-card {
+  width: 90%;
+ 
+}
+.student-info-card p {
+  margin-left: -20px;
+  font-size: 0.95rem;
+  
+}
+.student-courses-section{
+  width: 110%;
+  font-size: 14px;
+}
+.student-courses-list{
+  font-size: 14px;
+}
+
+.student-courses-table{
+  width: 110%;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  padding: 8px 0;
+  width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+
+  color: #2c3e50;
+  min-width: 120px;
+  font-size: 14px; 
+  margin-right: 10%; /* Adjusted for better spacing */
+  display: inline-block;
+}
+.course-summary {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 10px;
+    
+  }
+
+}
+
+@media (max-width: 360px){
+
+ .student-courses-container{
+  width: 70.5%;
+  margin-left: 40px;
+  height: 100vh;
+  
+}
+ .student-info-card p {
+  /* margin-left: -20px; */
+  font-size: 14px;
+  
+}
+.student-courses-section{
+  width: 110%;
+  font-size: 14px;
+}
+.student-courses-list{
+  font-size: 14px;
+}
+
+.student-courses-table{
+  width: 110%;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  padding: 8px 0;
+  width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+
+  color: #2c3e50;
+  min-width: 120px;
+  font-size: 14px; 
+  margin-right: 10%; /* Adjusted for better spacing */
+  display: inline-block;
+} 
+}
+
+@media (max-width: 344px){
+  .student-courses-container{
+  width: 70%;
+  margin-left: 40px;
+  height: 93vh ;
+  /* margin-left: 20px;       */
+}
+  .student-courses-table{
+  width: 110%;
+}
+.student-courses-table td {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 15px;
+  padding: 8px 0;
+  width: 80%;
+}
+
+.student-courses-table td::before {
+  content: attr(data-label);
+  font-weight: bold;
+
+  color: #2c3e50;
+  min-width: 120px; 
+  margin-right: 10%;
+  display: inline-block;
+}
+
+}
