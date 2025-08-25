@@ -43,14 +43,23 @@ const LoginForm = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data = {};
+      try {
+        data = await response.json();
+      } catch {
+        // response body might be empty or invalid JSON
+      }
 
       if (!response.ok) {
-        toast.error(data.message || 'Login failed');
+        toast.error(data.message || `Login failed (status ${response.status})`);
       } else {
         toast.success('Login successful!');
-        localStorage.setItem('student_token', data.token);
-        localStorage.setItem('studentFirstname', data.student.firstname);
+        if (data.token) {
+          localStorage.setItem('student_token', data.token);
+        }
+        if (data.student?.firstname) {
+          localStorage.setItem('studentFirstname', data.student.firstname);
+        }
         navigate('/student-dashboard');
       }
     } catch (error) {
@@ -65,7 +74,7 @@ const LoginForm = () => {
     <div className="lsf-wrapper">
       <div className="lsf-left-panel">
         <img src={logo} alt="Logo" className="lsf-logo" />
-         <h1>SOFCE</h1>
+        <h1>SOFCE</h1>
         <p>
           Welcome back!<br />Please enter your details to Login.
         </p>
@@ -73,7 +82,8 @@ const LoginForm = () => {
 
       <div className="lsf-right-panel">
         <form className="lsf-form" onSubmit={handleSubmit}>
-          <h2 className="lsf-form-title" ><MdEngineering /> Student Login</h2>
+          <h2 className="lsf-form-title"><MdEngineering /> Student Login</h2>
+
           <div className="lsf-form-group">
             <FaIdCard className="lsf-icon" />
             <input
@@ -117,8 +127,7 @@ const LoginForm = () => {
           </div>
 
           <button type="submit" className="lsf-btn" disabled={loading}>
-          
-              {loading ? <ClipLoader size={14} color="#fff" /> : "Login"}
+            {loading ? <ClipLoader size={14} color="#fff" /> : "Login"}
           </button>
 
           <p className="lsf-footer-text">
@@ -126,10 +135,10 @@ const LoginForm = () => {
             <Link to="/signup-student" className="lsf-link"> Sign up</Link>
           </p>
         </form>
-          <p className="lsf-footer">Powered by BADMAN</p>
-           <ToastContainer position="top-right" autoClose={4000} />
+
+        <p className="lsf-footer">Powered by BADMAN</p>
+        <ToastContainer position="top-right" autoClose={4000} />
       </div>
-     
     </div>
   );
 };
