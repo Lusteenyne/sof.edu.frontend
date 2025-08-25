@@ -54,7 +54,7 @@ const StudentDetails = ({
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/students/${student._id}/update`,
+        `https://sof-edu-backend.onrender.com/admin/students/${student._id}/update`,
         editData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -288,7 +288,7 @@ const SuperAdminStudents = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await axios.get("https://sof-edu.onrender.com/admin/students", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/admin/students", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStudents(res.data.students || []);
@@ -302,7 +302,7 @@ const SuperAdminStudents = () => {
   const fetchCourses = useCallback(async () => {
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await axios.get("https://sof-edu.onrender.com/admin/courses", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/admin/courses", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setCourses(res.data.courses || []);
@@ -319,7 +319,7 @@ const SuperAdminStudents = () => {
   const loadStudentResults = useCallback(async (studentId) => {
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await axios.get(`https://sof-edu.onrender.com/admin/students/${studentId}/results`, {
+      const res = await axios.get(`https://sof-edu-backend.onrender.com/admin/students/${studentId}/results`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStudentResults(prev => ({ ...prev, [studentId]: res.data.results || [] }));
@@ -332,7 +332,7 @@ const SuperAdminStudents = () => {
     if (!window.confirm("Are you sure you want to delete this student?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await axios.delete(`https://sof-edu.onrender.com/admin/students/${id}`, {
+      await axios.delete(`https://sof-edu-backend.onrender.com/admin/students/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Student deleted");
@@ -346,7 +346,7 @@ const SuperAdminStudents = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -361,7 +361,7 @@ const SuperAdminStudents = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/students/${studentId}/courses/${courseId}/reject`,
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -376,7 +376,7 @@ const SuperAdminStudents = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/students/${studentId}/results/approve`,
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/results/approve`,
         { code: grade.code, semester: grade.semester },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -392,7 +392,7 @@ const SuperAdminStudents = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.post(
-        `https://sof-edu.onrender.com/admin/students/${studentId}/results/submit-to-teacher`,
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/results/submit-to-teacher`,
         { grade },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -406,7 +406,7 @@ const SuperAdminStudents = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/students/${studentId}/update-info`,
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/update-info`,
         data,
         { headers: { Authorization: `Bearer ${token}` } }
       );

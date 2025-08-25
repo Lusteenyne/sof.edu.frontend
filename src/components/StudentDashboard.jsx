@@ -56,13 +56,13 @@ const StudentDashboard = () => {
 
       try {
         const [infoRes, statsRes, notifRes] = await Promise.all([
-          axios.get("https://sof-edu.onrender.com/student/info", {
+          axios.get("https://sof-edu-backend.onrender.com/student/info", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://sof-edu.onrender.com/student/dashboard/stats", {
+          axios.get("https://sof-edu-backend.onrender.com/student/dashboard/stats", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://sof-edu.onrender.com/student/notifications", {
+          axios.get("https://sof-edu-backend.onrender.com/student/notifications", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -116,7 +116,7 @@ const StudentDashboard = () => {
     if (!showNotifications && notifications.some((n) => !n.isRead)) {
       try {
         await axios.patch(
-          "https://sof-edu.onrender.com/student/notifications/mark-read",
+          "https://sof-edu-backend.onrender.com/student/notifications/mark-read",
           null,
           {
             headers: { Authorization: `Bearer ${token}` },

@@ -43,7 +43,7 @@ const SuperAdminCourses = () => {
 
   const fetchCourses = async () => {
     try {
-      const res = await axios.get("https://sof-edu.onrender.com/admin/courses", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/admin/courses", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = res.data;
@@ -67,7 +67,7 @@ const SuperAdminCourses = () => {
     }
 
     try {
-      await axios.post("https://sof-edu.onrender.com/admin/courses", newCourse, {
+      await axios.post("https://sof-edu-backend.onrender.com/admin/courses", newCourse, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Course added successfully");
@@ -88,7 +88,7 @@ const SuperAdminCourses = () => {
   const handleDeleteCourse = async (id) => {
     if (!window.confirm("Are you sure you want to delete this course?")) return;
     try {
-      await axios.delete(`https://sof-edu.onrender.com/admin/courses/${id}`, {
+      await axios.delete(`https://sof-edu-backend.onrender.com/admin/courses/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Course deleted");
@@ -106,7 +106,7 @@ const SuperAdminCourses = () => {
   const handleSaveEdit = async () => {
     try {
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/courses/${editingId}`,
+        `https://sof-edu-backend.onrender.com/admin/courses/${editingId}`,
         editedCourse,
         {
           headers: { Authorization: `Bearer ${token}` },

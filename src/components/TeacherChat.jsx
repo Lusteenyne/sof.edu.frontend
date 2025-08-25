@@ -39,7 +39,7 @@ const TeacherChat = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("https://sof-edu.onrender.com/teacher/students", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/teacher/students", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const studentsArray = res.data.students;
@@ -52,7 +52,7 @@ const TeacherChat = () => {
 
   const fetchUnreadCounts = async () => {
     try {
-      const res = await axios.get("https://sof-edu.onrender.com/teacher/unread-counts", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/teacher/unread-counts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUnreadCounts(res.data);
@@ -66,7 +66,7 @@ const TeacherChat = () => {
     setMessages([]);
     try {
       const res = await axios.get(
-        `https://sof-edu.onrender.com/teacher/messages/student?studentId=${studentId}`,
+        `https://sof-edu-backend.onrender.com/teacher/messages/student?studentId=${studentId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const formatted = res.data.map((msg) => {
@@ -101,7 +101,7 @@ const TeacherChat = () => {
     setLoading(true);
     setMessages([]);
     try {
-      const res = await axios.get("https://sof-edu.onrender.com/teacher/messages/admin-thread", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/teacher/messages/admin-thread", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const formatted = res.data.map((msg) => {
@@ -143,8 +143,8 @@ const TeacherChat = () => {
 
   try {
     const url = isAdminChat
-      ? "https://sof-edu.onrender.com/teacher/messages/send-admin"
-      : "https://sof-edu.onrender.com/teacher/messages/send";
+      ? "https://sof-edu-backend.onrender.com/teacher/messages/send-admin"
+      : "https://sof-edu-backend.onrender.com/teacher/messages/send";
 
     const payload = isAdminChat ? { text } : { studentId: selectedStudent._id, text };
 
@@ -179,7 +179,7 @@ const TeacherChat = () => {
 
     try {
       await axios.put(
-        `https://sof-edu.onrender.com/teacher/editMessage/${editingMessageId}`,
+        `https://sof-edu-backend.onrender.com/teacher/editMessage/${editingMessageId}`,
         { newText: text },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -196,7 +196,7 @@ const TeacherChat = () => {
 
     try {
       await axios.delete(
-        `https://sof-edu.onrender.com/teacher/deleteMessage/${messageId}`,
+        `https://sof-edu-backend.onrender.com/teacher/deleteMessage/${messageId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       isAdminChat ? fetchMessagesWithAdmin() : fetchMessagesWithStudent(selectedStudent._id);

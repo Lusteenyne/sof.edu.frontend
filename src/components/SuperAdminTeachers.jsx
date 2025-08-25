@@ -47,7 +47,7 @@ const SuperAdminTeachers = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await axios.get("https://sof-edu.onrender.com/admin/teachers", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/admin/teachers", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -75,7 +75,7 @@ const SuperAdminTeachers = () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/teachers/${id}/${action}`,
+        `https://sof-edu-backend.onrender.com/admin/teachers/${id}/${action}`,
         null,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -91,7 +91,7 @@ const SuperAdminTeachers = () => {
     if (!window.confirm("Are you sure you want to delete this teacher?")) return;
     try {
       const token = localStorage.getItem("admin_token");
-      await axios.delete(`https://sof-edu.onrender.com/admin/teachers/${id}`, {
+      await axios.delete(`https://sof-edu-backend.onrender.com/admin/teachers/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Teacher deleted");
@@ -129,7 +129,7 @@ const SuperAdminTeachers = () => {
     const { department, level, semester } = teacher;
     try {
       const token = localStorage.getItem("admin_token");
-      const res = await axios.get("https://sof-edu.onrender.com/admin/courses", {
+      const res = await axios.get("https://sof-edu-backend.onrender.com/admin/courses", {
         headers: { Authorization: `Bearer ${token}` },
         params: { department, level, semester },
       });
@@ -174,7 +174,7 @@ const assignCourses = async (teacherId, index) => {
   try {
     const token = localStorage.getItem("admin_token");
     await axios.patch(
-      `https://sof-edu.onrender.com/admin/teachers/${teacherId}/assign-courses`,
+      `https://sof-edu-backend.onrender.com/admin/teachers/${teacherId}/assign-courses`,
       { courses, department, level, semester },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -194,7 +194,7 @@ const assignCourses = async (teacherId, index) => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.delete(
-        `https://sof-edu.onrender.com/admin/teachers/${teacherId}/remove-course/${courseId}`,
+        `https://sof-edu-backend.onrender.com/admin/teachers/${teacherId}/remove-course/${courseId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success("Course removed from teacher");

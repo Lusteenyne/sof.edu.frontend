@@ -47,7 +47,7 @@ const SuperAdminBilling = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('admin_token');
-      const res = await axios.get('https://sof-edu.onrender.com/admin/students', {
+      const res = await axios.get('https://sof-edu-backend.onrender.com/admin/students', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStudents(res.data.students);
@@ -63,7 +63,7 @@ const SuperAdminBilling = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('admin_token');
-      const res = await axios.get('https://sof-edu.onrender.com/admin/payments/config', {
+      const res = await axios.get('https://sof-edu-backend.onrender.com/admin/payments/config', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSchoolFee(res.data.amount);
@@ -83,7 +83,7 @@ const SuperAdminBilling = () => {
       for (const student of students) {
         try {
           const res = await axios.get(
-            `https://sof-edu.onrender.com/admin/payments/student/${student._id}`,
+            `https://sof-edu-backend.onrender.com/admin/payments/student/${student._id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           allPayments.push(...res.data.payments);
@@ -108,7 +108,7 @@ const SuperAdminBilling = () => {
       setLoading(true);
       const token = localStorage.getItem('admin_token');
       await axios.patch(
-        'https://sof-edu.onrender.com/admin/payments/config',
+        'https://sof-edu-backend.onrender.com/admin/payments/config',
         { amount: Number(newFee) },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -130,7 +130,7 @@ const SuperAdminBilling = () => {
       setLoading(true);
       const token = localStorage.getItem('admin_token');
       await axios.patch(
-        `https://sof-edu.onrender.com/admin/payments/${paymentId}/verify`,
+        `https://sof-edu-backend.onrender.com/admin/payments/${paymentId}/verify`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

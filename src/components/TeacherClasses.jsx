@@ -26,7 +26,7 @@ const TeacherClasses = () => {
 
     const fetchCourses = async () => {
       try {
-        const res = await fetch('https://sof-edu.onrender.com/teacher/courses', {
+        const res = await fetch('https://sof-edu-backend.onrender.com/teacher/courses', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -53,7 +53,7 @@ const TeacherClasses = () => {
   const fetchSubmittedResults = async (courseId) => {
     try {
       const res = await fetch(
-        `https://sof-edu.onrender.com/teacher/course/${courseId}/submitted-results`,
+        `https://sof-edu-backend.onrender.com/teacher/course/${courseId}/submitted-results`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -88,7 +88,7 @@ const TeacherClasses = () => {
 
     try {
       const res = await fetch(
-        `https://sof-edu.onrender.com/teacher/course/${courseId}/students`,
+        `https://sof-edu-backend.onrender.com/teacher/course/${courseId}/students`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -189,7 +189,7 @@ const TeacherClasses = () => {
 
     try {
       const res = await fetch(
-        `https://sof-edu.onrender.com/teacher/course/${selectedCourse._id}/submit-results`,
+        `https://sof-edu-backend.onrender.com/teacher/course/${selectedCourse._id}/submit-results`,
         {
           method: 'POST',
           headers: {

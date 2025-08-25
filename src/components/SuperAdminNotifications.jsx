@@ -19,7 +19,7 @@ function SuperAdminNotifications() {
 
     const fetchNotifications = async () => {
       try {
-        const res = await fetch('https://sof-edu.onrender.com/admin/notifications', {
+        const res = await fetch('https://sof-edu-backend.onrender.com/admin/notifications', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ function SuperAdminNotifications() {
   const markAllRead = async () => {
     setMarking(true);
     try {
-      const res = await fetch('https://sof-edu.onrender.com/admin/notifications/mark-read', {
+      const res = await fetch('https://sof-edu-backend.onrender.com/admin/notifications/mark-read', {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,

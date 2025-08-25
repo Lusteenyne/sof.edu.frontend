@@ -35,7 +35,7 @@ const StudentProfile = () => {
     const fetchProfile = async () => {
       console.log('Fetching student profile...');
       try {
-        const res = await fetch('https://sof-edu.onrender.com/student/profile', {
+        const res = await fetch('https://sof-edu-backend.onrender.com/student/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -63,7 +63,7 @@ const StudentProfile = () => {
 
   const handleUpdate = async () => {
     try {
-      const res = await fetch('https://sof-edu.onrender.com/student/profile', {
+      const res = await fetch('https://sof-edu-backend.onrender.com/student/profile', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ const StudentProfile = () => {
     formData.append('profilePhoto', selectedPhoto);
 
     try {
-      const res = await fetch('https://sof-edu.onrender.com/student/upload-profile-photo', {
+      const res = await fetch('https://sof-edu-backend.onrender.com/student/upload-profile-photo', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,

@@ -36,7 +36,7 @@ const SuperAdminLogin = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://sof-edu.onrender.com/admin/login', {
+      const response = await fetch('https://sof-edu-backend.onrender.com/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

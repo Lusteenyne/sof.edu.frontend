@@ -17,7 +17,7 @@ function StudentNotifications() {
       return;
     }
 
-    fetch('https://sof-edu.onrender.com/student/notifications', {
+    fetch('https://sof-edu-backend.onrender.com/student/notifications', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -44,7 +44,7 @@ function StudentNotifications() {
     }
 
     setMarking(true);
-    fetch('https://sof-edu.onrender.com/student/notifications/mark-read', {
+    fetch('https://sof-edu-backend.onrender.com/student/notifications/mark-read', {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,

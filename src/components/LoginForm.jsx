@@ -39,7 +39,7 @@ const LoginForm = () => {
     try {
       console.log("Submitting login with data:", formData);
 
-      const response = await fetch('https://sof-edu.onrender.com/student/login', {
+      const response = await fetch('https://sof-edu-backend.onrender.com/student/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

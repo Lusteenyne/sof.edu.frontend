@@ -30,7 +30,7 @@ const TeacherForgotPassword = () => {
 
     setLoading(true);
     try {
-      const response = await fetch('https://sof-edu.onrender.com/teacher/forgot-password', {
+      const response = await fetch('https://sof-edu-backend.onrender.com/teacher/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),

@@ -41,13 +41,13 @@ const SuperAdminDashboard = ({ setActiveSection }) => {
 
       try {
         const [infoRes, statsRes, notifRes] = await Promise.all([
-          axios.get("https://sof-edu.onrender.com/admin/info", {
+          axios.get("https://sof-edu-backend.onrender.com/admin/info", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://sof-edu.onrender.com/admin/dashboard/stats", {
+          axios.get("https://sof-edu-backend.onrender.com/admin/dashboard/stats", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://sof-edu.onrender.com/admin/notifications", {
+          axios.get("https://sof-edu-backend.onrender.com/admin/notifications", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);
@@ -90,7 +90,7 @@ const SuperAdminDashboard = ({ setActiveSection }) => {
     if (!showNotifications && notifications.length > 0) {
       try {
         await axios.patch(
-          "https://sof-edu.onrender.com/admin/notifications/mark-read",
+          "https://sof-edu-backend.onrender.com/admin/notifications/mark-read",
           null,
           {
             headers: { Authorization: `Bearer ${token}` },

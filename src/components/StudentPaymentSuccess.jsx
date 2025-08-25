@@ -31,7 +31,7 @@ const StudentPaymentSuccess = () => {
       console.log('📡 Sending request to verify payment with reference:', reference);
 
       const response = await axios.get(
-        `https://sof-edu.onrender.com/student/payments/verify-paystack/${reference}`,
+        `https://sof-edu-backend.onrender.com/student/payments/verify-paystack/${reference}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

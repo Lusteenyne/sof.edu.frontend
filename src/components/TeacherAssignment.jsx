@@ -25,7 +25,7 @@ const TeacherAssignment = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('https://sof-edu.onrender.com/teacher/courses', {
+        const res = await fetch('https://sof-edu-backend.onrender.com/teacher/courses', {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -45,7 +45,7 @@ const TeacherAssignment = () => {
 
   const fetchAssignments = async () => {
     try {
-      const res = await fetch(`https://sof-edu.onrender.com/teacher/course/${selectedCourseId}/assignments`, {
+      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/assignments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -57,7 +57,7 @@ const TeacherAssignment = () => {
 
   const fetchSubmissions = async (assignmentId) => {
     try {
-      const res = await fetch(`https://sof-edu.onrender.com/teacher/assignments/${assignmentId}/submissions`, {
+      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/${assignmentId}/submissions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -84,8 +84,8 @@ const TeacherAssignment = () => {
 
     try {
       const url = editId
-        ? `https://sof-edu.onrender.com/teacher/assignments/${editId}`
-        : `https://sof-edu.onrender.com/teacher/course/${selectedCourseId}/give-assignments`;
+        ? `https://sof-edu-backend.onrender.com/teacher/assignments/${editId}`
+        : `https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/give-assignments`;
       const method = editId ? 'PATCH' : 'POST';
 
       const res = await fetch(url, { method, headers: { Authorization: `Bearer ${token}` }, body: formData });
@@ -118,7 +118,7 @@ const TeacherAssignment = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this assignment?')) return;
     try {
-      const res = await fetch(`https://sof-edu.onrender.com/teacher/assignments/${id}`, {
+      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -138,7 +138,7 @@ const TeacherAssignment = () => {
     }
 
     try {
-      const res = await fetch(`https://sof-edu.onrender.com/teacher/assignments/submission/${submissionId}/grade`, {
+      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/submission/${submissionId}/grade`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({ score: Number(score) }),
@@ -209,7 +209,7 @@ const TeacherAssignment = () => {
                 <strong>{a.title}</strong> - Due: {new Date(a.deadline).toLocaleString()}
                 {a.fileUrls?.length > 0 && (
                   <div>
-                    <a href={`https://sof-edu.onrender.com${a.fileUrls[0]}`} target="_blank" rel="noopener noreferrer" download>
+                    <a href={`https://sof-edu-backend.onrender.com${a.fileUrls[0]}`} target="_blank" rel="noopener noreferrer" download>
                       Download File
                     </a>
                   </div>
@@ -244,7 +244,7 @@ const TeacherAssignment = () => {
                           <p><strong>Submitted At:</strong> {new Date(s.submittedAt).toLocaleString()}</p>
                           {s.fileUrls?.map((url, idx) => (
                             <div key={idx}>
-                              <a href={`https://sof-edu.onrender.com${url}`} target="_blank" rel="noopener noreferrer" download>
+                              <a href={`https://sof-edu-backend.onrender.com${url}`} target="_blank" rel="noopener noreferrer" download>
                                 View / Download File
                               </a>
                             </div>

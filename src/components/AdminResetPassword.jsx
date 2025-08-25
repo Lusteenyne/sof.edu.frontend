@@ -58,7 +58,7 @@ const AdminResetPassword = () => {
     setCodeError('');
 
     try {
-      const res = await fetch('https://sof-edu.onrender.com/admin/verify-code', {
+      const res = await fetch('https://sof-edu-backend.onrender.com/admin/verify-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: enteredCode }),
@@ -93,7 +93,7 @@ const AdminResetPassword = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('https://sof-edu.onrender.com/admin/reset-password', {
+      const res = await fetch('https://sof-edu-backend.onrender.com/admin/reset-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, code: enteredCode, newPassword }),
