@@ -376,7 +376,7 @@ margin-right: 10%;
 @media (max-width: 414px){
 .student-courses-container{
   width: 74%;
-  height: 95vh,
+  height: 90vh,
   /* margin-left: 20px;       */
 }
 .student-info-card {
