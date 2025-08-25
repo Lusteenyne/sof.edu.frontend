@@ -26,14 +26,15 @@ const AdminChat = () => {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    if (!token) return 
-      navigate("/login-superadmin");
-      
-    
-    fetchTeachers();
-    fetchStudents();
-    fetchContacts();
-  }, []);
+  if (!token) {
+    navigate("/login-superadmin");
+    return;
+  }
+
+  fetchTeachers();
+  fetchStudents();
+  fetchContacts();
+}, [navigate, token]);
 
   useEffect(() => {
     if (selectedUser && userType && selectedUser._id) {

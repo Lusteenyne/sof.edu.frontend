@@ -227,8 +227,8 @@
 @media (max-width: 414px){
   .student-dashboard {
    margin-left: 56px;
-   width: 79%;
-   margin-top: -10px;
+   width: 75%;
+   ;
   }
   .student-dashboard-pic {
     width: 40px;
