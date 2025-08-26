@@ -1,23 +1,26 @@
-.student-dashboard {
-  padding: 20px;
-  background-color: #f4f6f8;
-  min-height: 70vh;
-  margin-left: 20px;
-  font-family: "Segoe UI", sans-serif;
+.student-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: sticky; /* keep it at top */
+  top: 0; /* stick to top */
+  z-index: 1000; /* above the dashboard background */
+  background-color: #f4f6f8; /* same as container or white */
+  padding: 10px 20px;
 }
 
 .student-dashboard h2 {
- font-size: 20px;
+  position: relative; /* helps stacking */
+  z-index: 1010; /* above everything */
+  font-size: 20px;
   font-weight: bold;
   color: #1e2b3c;
-  width: 80%;
-  margin-left: 10px;
   white-space: normal;
   overflow: visible;
-  text-overflow: unset;
-  max-width: 100%;
-  word-break: break-word; 
+  word-break: break-word;
 }
+
 
 /* @media (max-width: 480px) {
   .student-dashboard h2 {
