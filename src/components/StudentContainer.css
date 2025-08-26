@@ -2,7 +2,7 @@
   display: flex;
   height: 90vh;
   background-color: #f0f2f5;
-overflow: hidden;
+overflow: visible;
   
   
   -webkit-overflow-scrolling: touch;
