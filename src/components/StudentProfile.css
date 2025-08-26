@@ -213,12 +213,12 @@
 @media (max-width: 414px) {
   .student-profile-container{
      margin-left: 65px;
-    width: 67.1%;
+    width: 66%;
   }
 
   .student-profile-header {
   
-   width: 118%;
+   width: 117%;
    
 }
 }
