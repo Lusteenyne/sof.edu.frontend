@@ -43,7 +43,7 @@ overflow: visible;
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 999;
+  z-index: 3000;
   margin-left: 20px;
   background-color: #ffffff;
   display: flex;
