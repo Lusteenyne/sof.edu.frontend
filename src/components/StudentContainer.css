@@ -122,6 +122,12 @@ overflow: hidden;
   }
 }
 
+@media screen and (max-width: 414px){
+  .student-main-content {
+    margin-top: 80px; 
+  }
+}
+
 /* Extra small devices */
 @media screen and (max-width: 360px) {
   .student-main-header {
