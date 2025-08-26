@@ -1,7 +1,8 @@
 .student-container-wrapper { 
   display: flex;
   height: 90vh;
-  background-color: #f0f2f5;
+  background-color: #043888ff;
+  /* background-color: #f0f2f5; */
 overflow: visible;
   
   
@@ -122,6 +123,13 @@ overflow: visible;
   }
 }
 
+
+
+@media screen and (max-width: 414px) {
+  .student-main-header {
+    padding: 10px 12px;
+  }
+}
 
 /* Extra small devices */
 @media screen and (max-width: 360px) {
