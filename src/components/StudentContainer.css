@@ -1,9 +1,10 @@
 .student-container-wrapper { 
   display: flex;
   height: 90vh;
+   background: transparent; 
+   
   
-  
-overflow: visible;
+overflow: hidden;
   
   
   -webkit-overflow-scrolling: touch;
