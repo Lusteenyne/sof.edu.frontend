@@ -88,6 +88,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease;
+   margin-top: 20px;
 }
 
 .student-sidebar-logout:hover {
@@ -138,27 +139,8 @@
   }
 }
 
-/* Optional tweaks for tablets */
-/* @media screen and (max-width: 1024px) {
-  .student-sidebar {
-    width: 20%;
-    height: 95%;
+@media screen and (max-width: 540px) {
+  .student-sidebar{
+    height: 88vh;
   }
-
-  .student-sidebar-closed {
-    width: 50px;
-   
-  }
-
-  .student-sidebar-title {
-    font-size: 16px;
-  }
-
-  .student-sidebar-label {
-    font-size: 13px;
-  }
-
-  .student-sidebar-icon {
-    font-size: 16px;
-  }
-} */
+}
