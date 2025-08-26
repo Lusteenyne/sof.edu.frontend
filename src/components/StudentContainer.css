@@ -1,10 +1,13 @@
 .student-container-wrapper { 
-  padding: 1rem;
+ padding: 1rem;
   font-family: "Segoe UI", sans-serif;
   background-color: #f9f9f9;
   color: #333;
   height: 90dvh;
-  width: 95%;
+  width: 94%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .student-container-wrapper::-webkit-scrollbar {
