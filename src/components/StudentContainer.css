@@ -3,7 +3,8 @@
   font-family: "Segoe UI", sans-serif;
   background-color: #f9f9f9;
   color: #333;
-  height: 90%;
+  height: 90dvh;
+  width: 95%;
 }
 
 .student-container-wrapper::-webkit-scrollbar {
