@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 95vh;
+  height: 95dvh;
   background-color: #1e2b3c;
   color: white;
   width: 220px;
@@ -94,7 +94,7 @@
   background-color: #f44336;
   border-radius: 6px;
   color: white; 
-  margin-bottom: 100px;
+  margin-bottom: 45px;
    transition: background-color 0.2s ease;
   cursor: pointer;
 }
