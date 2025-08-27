@@ -94,7 +94,7 @@
   background-color: #f44336;
   border-radius: 6px;
   color: white;
-  margin-top: 30px;
+  margin-bottom: 30px;
    transition: background-color 0.2s ease;
   cursor: pointer;
 }
