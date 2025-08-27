@@ -93,9 +93,8 @@
   padding: 12px 10px;
   background-color: #f44336;
   border-radius: 6px;
-  color: white;
-  margin-top: 200px; 
-  margin-bottom: 0;
+  color: white; 
+  margin-bottom: 60px;
    transition: background-color 0.2s ease;
   cursor: pointer;
 }
