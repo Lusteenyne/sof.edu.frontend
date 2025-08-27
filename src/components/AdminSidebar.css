@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 95vh;
+  height: 95dvh;
   background-color: #1e2b3c;
   color: white;
   width: 220px;
@@ -87,15 +87,16 @@
 
 /* Logout */
 .admin-sidebar-logout {
-  display: flex;
+   display: flex;
   align-items: center;
   gap: 10px;
   padding: 12px 10px;
   background-color: #f44336;
   border-radius: 6px;
   color: white;
-  margin-top: auto;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 50px; 
 }
 
 .admin-sidebar-logout:hover {
@@ -134,27 +135,3 @@
   }
 }
 
-/* Optional tweaks for tablets */
-@media screen and (max-width: 1024px) {
-  .admin-sidebar {
-    width: 150px;
-    height: 97vh;
-  }
-
-  .admin-sidebar-closed {
-    width: 50px;
-    padding: 20px 8px;
-  }
-
-  .admin-sidebar-title {
-    font-size: 16px;
-  }
-
-  .admin-sidebar-label {
-    font-size: 13px;
-  }
-
-  .admin-sidebar-icon {
-    font-size: 16px;
-  }
-}

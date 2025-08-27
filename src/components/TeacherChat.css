@@ -277,7 +277,7 @@
 @media (max-width: 1024px) {
 
   .teacher-chat-container{
-    height: 95vh;
+    height: 95%;
   }
 .teacher-chat-main{
   height: 96vh ;
@@ -310,7 +310,7 @@
 
 @media (max-width: 912px){
   .teacher-chat-main{
-    height: 95vh;
+    height: 95%;
   }
   .teacher-chat-container{
   height: 95vh;
@@ -345,7 +345,7 @@
   .teacher-chat-container {
     flex-direction: column;
    
-    height: 95vh;
+    height: 95%;
     width: 93%;
     margin-left: 49px;
   }
@@ -393,7 +393,7 @@
   margin-left: 50px;
  
   width: 90%;
-  height: 93vh;
+  height: 93%;
 }
 .teacher-chat-search{
   width: 80%;
@@ -457,7 +457,7 @@
 @media (max-width: 375px){
 .teacher-chat-container{
  
-  height: 94vh;
+  height: 91%;
 }
 
 

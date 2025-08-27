@@ -1,13 +1,11 @@
 .admin-container-wrapper { 
-  display: flex;
-  height: 100vh;
-  background-color: #f0f2f5;
-  overflow: hidden;
-  
- 
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+    display: flex;
+  height: 90vh;
+   background: transparent; 
+
+   position: relative;
+  z-index: 1;
+overflow: hidden;
 }
 
 .admin-container-wrapper::-webkit-scrollbar {
@@ -43,7 +41,7 @@
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 50;
+  z-index: 999;
   
   background-color: #ffffff;
   display: flex;

@@ -94,9 +94,9 @@
   background-color: #f44336;
   border-radius: 6px;
   color: white; 
-  border: green solid 3px;
+
   margin-top: 50px;
-  /* margin-bottom: 45px; */
+ 
    transition: background-color 0.2s ease;
   cursor: pointer;
 }
