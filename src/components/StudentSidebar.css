@@ -87,7 +87,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin-bottom: 45px; 
+  margin-bottom: 30px; 
 }
 
 .student-sidebar-logout:hover {
