@@ -22,7 +22,8 @@ const StudentCourses = () => {
       navigate('/login-student');
       return;
     }
-const fetchData = async () => {
+
+    const fetchData = async () => {
   try {
     const [studentRes, availableRes, submittedRes] = await Promise.all([
       axios.get('https://sof-edu-backend.onrender.com/student/info', {
@@ -42,10 +43,8 @@ const fetchData = async () => {
   } catch (err) {
     console.error('Error loading data:', err);
 
-    // Check if backend says profile incomplete
     if (err.response && err.response.status === 403) {
-      const missing = err.response.data?.missingFields?.join(', ') || 'profile fields';
-      toast.error(`Please update your profile before accessing courses. Missing: ${missing}`);
+      toast.error('Please complete your profile before accessing courses.');
       
     } else {
       toast.error('Failed to load data.');
