@@ -113,15 +113,16 @@ const StudentCourses = () => {
   // if (!student) return <div className="student-courses-error">Unable to load student information.</div>;
 
   const {
-    firstname,
-    lastname,
-    fullName,
-    studentId,
-    level,
-    department,
-    semester,
-    session,
-  } = student;
+  firstname,
+  lastname,
+  fullName,
+  studentId,
+  level,
+  department,
+  semester,
+  session,
+} = student || {};
+
 
   const displayName = firstname && lastname ? `${firstname} ${lastname}` : fullName || 'N/A';
 
