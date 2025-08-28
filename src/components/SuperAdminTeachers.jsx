@@ -390,35 +390,19 @@ const assignCourses = async (teacherId, index) => {
 <p>
   <strong>CV:</strong>{" "}
   {teacher.cvUrl ? (
-    <a
-      className="Cv"
-      href={teacher.cvUrl}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="View CV"
-    >
-      <FaFileDownload /> View
+    <a href={`https://sof-edu-backend.onrender.com${teacher.cvUrl}`} target="_blank" rel="noreferrer">
+      View CV
     </a>
-  ) : (
-    "Not uploaded"
-  )}
+  ) : "Not uploaded"}
 </p>
 
 <p>
   <strong>Certificate:</strong>{" "}
   {teacher.certificateUrl ? (
-    <a
-      className="Cv"
-      href={teacher.certificateUrl}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="View Certificate"
-    >
-      <FaFileDownload /> View
+    <a href={`https://sof-edu-backend.onrender.com${teacher.certificateUrl}`} target="_blank" rel="noreferrer">
+      View Certificate
     </a>
-  ) : (
-    "Not uploaded"
-  )}
+  ) : "Not uploaded"}
 </p>
 
                       </div>
