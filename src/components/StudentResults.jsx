@@ -23,30 +23,34 @@ const StudentResults = ({ studentId }) => {
       navigate("/login-student");
       return;
     }
+const fetchResults = async () => {
+  try {
+    const res = await axios.get(
+      "https://sof-edu-backend.onrender.com/student/approved-results",
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
 
-    const fetchResults = async () => {
-      try {
-        const res = await axios.get(
-          "https://sof-edu-backend.onrender.com/student/approved-results",
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+    console.log("Full Response:", res.data);
 
-        console.log("Full Response:", res.data);
+    const { student, results, cgpa, outstandingCourses } = res.data;
+    setStudentInfo(student);
+    setResults(results);
+    setCgpa(cgpa);
+    setOutstandingCourses(outstandingCourses);
 
-        const { student, results, cgpa, outstandingCourses } = res.data;
-        setStudentInfo(student);
-        setResults(results);
-        setCgpa(cgpa);
-        setOutstandingCourses(outstandingCourses);
+    toast.success("Results loaded successfully");
+  } catch (error) {
+    console.error("Error fetching results:", error);
 
-        toast.success("Results loaded successfully");
-      } catch (error) {
-        console.error("Error fetching results:", error);
-        toast.error("Failed to load student results");
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (error.response && error.response.status === 403) {
+      toast.error("Please complete your profile before accessing results.");
+    } else {
+      toast.error("Failed to load student results");
+    }
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchResults();
   }, [studentId, navigate]);
