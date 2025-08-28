@@ -387,17 +387,40 @@ const assignCourses = async (teacherId, index) => {
                         )}
 
 
-                        <p><strong >CV:</strong> {teacher.cvUrl ? (
-                          <a className = "Cv" href={teacher.cvUrl} target="_blank" rel="noreferrer">
-                            <FaFileDownload /> Download
-                          </a>
-                        ) : "Not uploaded"}</p>
+                        <p>
+  <strong>CV:</strong>{" "}
+  {teacher.cvUrl ? (
+    <a
+      className="Cv"
+      href={teacher.cvUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Download CV"
+    >
+      <FaFileDownload /> Download
+    </a>
+  ) : (
+    "Not uploaded"
+  )}
+</p>
 
-                        <p><strong>Certificate:</strong> {teacher.certificateUrl ? (
-                          <a className = "Cv" href={teacher.certificateUrl} target="_blank" rel="noreferrer">
-                            <FaFileDownload /> Download
-                          </a>
-                        ) : "Not uploaded"}</p>
+<p>
+  <strong>Certificate:</strong>{" "}
+  {teacher.certificateUrl ? (
+    <a
+      className="Cv"
+      href={teacher.certificateUrl}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Download Certificate"
+    >
+      <FaFileDownload /> Download
+    </a>
+  ) : (
+    "Not uploaded"
+  )}
+</p>
+
                       </div>
                     </td>
                   </tr>
