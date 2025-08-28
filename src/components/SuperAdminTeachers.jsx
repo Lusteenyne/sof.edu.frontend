@@ -387,7 +387,7 @@ const assignCourses = async (teacherId, index) => {
                         )}
 
 
-                        <p>
+<p>
   <strong>CV:</strong>{" "}
   {teacher.cvUrl ? (
     <a
@@ -395,9 +395,9 @@ const assignCourses = async (teacherId, index) => {
       href={teacher.cvUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label="Download CV"
+      aria-label="View CV"
     >
-      <FaFileDownload /> Download
+      <FaFileDownload /> View
     </a>
   ) : (
     "Not uploaded"
@@ -412,9 +412,9 @@ const assignCourses = async (teacherId, index) => {
       href={teacher.certificateUrl}
       target="_blank"
       rel="noreferrer"
-      aria-label="Download Certificate"
+      aria-label="View Certificate"
     >
-      <FaFileDownload /> Download
+      <FaFileDownload /> View
     </a>
   ) : (
     "Not uploaded"
