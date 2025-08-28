@@ -110,7 +110,7 @@ const StudentCourses = () => {
   }, [enrichedSubmittedCourses]);
 
   if (loading) return <LoadingSpinner />;
-  if (!student) return <div className="student-courses-error">Unable to load student information.</div>;
+  // if (!student) return <div className="student-courses-error">Unable to load student information.</div>;
 
   const {
     firstname,
