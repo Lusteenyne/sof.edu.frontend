@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoadingSpinner.css";
-import logo from "../assets/engilogo.jpg"; // Replace with your actual logo path
+import logo from "../assets/engilogo.jpg"; 
 
 const LoadingSpinner = () => {
   return (

@@ -22,31 +22,39 @@ const StudentCourses = () => {
       navigate('/login-student');
       return;
     }
+const fetchData = async () => {
+  try {
+    const [studentRes, availableRes, submittedRes] = await Promise.all([
+      axios.get('https://sof-edu-backend.onrender.com/student/info', {
+        headers: { Authorization: `Bearer ${token}` },
+      }),
+      axios.get('https://sof-edu-backend.onrender.com/student/courses/matching', {
+        headers: { Authorization: `Bearer ${token}` },
+      }),
+      axios.get('https://sof-edu-backend.onrender.com/student/courses/submitted', {
+        headers: { Authorization: `Bearer ${token}` },
+      }),
+    ]);
 
-    const fetchData = async () => {
-      try {
-        const [studentRes, availableRes, submittedRes] = await Promise.all([
-          axios.get('https://sof-edu-backend.onrender.com/student/info', {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get('https://sof-edu-backend.onrender.com/student/courses/matching', {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-          axios.get('https://sof-edu-backend.onrender.com/student/courses/submitted', {
-            headers: { Authorization: `Bearer ${token}` },
-          }),
-        ]);
+    setStudent(studentRes.data || {});
+    setAvailableCourses(availableRes.data.courses || []);
+    setSubmittedCourses(submittedRes.data.courses || []);
+  } catch (err) {
+    console.error('Error loading data:', err);
 
-        setStudent(studentRes.data || {});
-        setAvailableCourses(availableRes.data.courses || []);
-        setSubmittedCourses(submittedRes.data.courses || []);
-      } catch (err) {
-        console.error('Error loading data:', err);
-        toast.error('Failed to load data.');
-      } finally {
-        setLoading(false);
-      }
-    };
+    // Check if backend says profile incomplete
+    if (err.response && err.response.status === 403) {
+      const missing = err.response.data?.missingFields?.join(', ') || 'profile fields';
+      toast.error(`Please update your profile before accessing courses. Missing: ${missing}`);
+      
+    } else {
+      toast.error('Failed to load data.');
+    }
+  } finally {
+    setLoading(false);
+  }
+};
+
 
     fetchData();
   }, [token, navigate]);
