@@ -27,19 +27,25 @@ const StudentPaymentPage = () => {
     }
 
     const fetchProfile = async () => {
-      try {
-        const res = await fetch('https://sof-edu-backend.onrender.com/student/profile', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await res.json();
-        if (res.ok) setStudent(data);
-        else toast.error(data.message || 'Failed to load profile');
-      } catch {
-        toast.error('Error fetching student profile');
-      } finally {
-        setLoading(false);
-      }
-    };
+  try {
+    const res = await fetch('https://sof-edu-backend.onrender.com/student/profile', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await res.json();
+
+    if (res.status === 403) {
+      toast.error('Please complete your profile before accessing payments.');
+      return;
+    }
+
+    if (res.ok) setStudent(data);
+    else toast.error(data.message || 'Failed to load profile');
+  } catch {
+    toast.error('Error fetching student profile');
+  } finally {
+    setLoading(false);
+  }
+};
 
     const fetchPayments = async () => {
       try {
@@ -69,56 +75,72 @@ const StudentPaymentPage = () => {
     fetchPayments();
   }, [token, navigate]);
 
-  const handleReceiptUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  
+const handleReceiptUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-    const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
-    if (!allowedTypes.includes(file.type)) {
-      toast.error('Only images or PDF receipts are allowed');
-      return;
-    }
+  const allowedTypes = ['image/png', 'image/jpeg', 'application/pdf'];
+  if (!allowedTypes.includes(file.type)) {
+    toast.error('Only images or PDF receipts are allowed');
+    return;
+  }
 
-    setReceipt(file);
-    const formData = new FormData();
-    formData.append('receipt', file);
-    setUploading(true);
+  setReceipt(file);
+  const formData = new FormData();
+  formData.append('receipt', file);
+  setUploading(true);
 
-    try {
-      const res = await fetch('https://sof-edu-backend.onrender.com/student/payments/upload-transfer-receipt', {
+  try {
+    const res = await fetch(
+      'https://sof-edu-backend.onrender.com/student/payments/upload-transfer-receipt',
+      {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
-      });
-      const data = await res.json();
-      if (res.ok) {
-        toast.success('Receipt uploaded successfully');
-        setReceipt(null);
-        if (fileInputRef.current) fileInputRef.current.value = '';
-        const refreshed = await fetch('https://sof-edu-backend.onrender.com/student/payments', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const refreshedData = await refreshed.json();
-        if (refreshed.ok) {
-          const formatted = Array.isArray(refreshedData)
-            ? refreshedData.map(p => ({
-                ...p,
-                amount: p.amountExpected || 0,
-                paid: p.amountPaid || 0,
-                balance: (p.amountExpected || 0) - (p.amountPaid || 0),
-              }))
-            : [];
-          setPayments(formatted);
-        }
-      } else {
-        toast.error(data.message || 'Upload failed');
       }
-    } catch {
-      toast.error('Upload failed');
-    } finally {
-      setUploading(false);
+    );
+
+    if (res.status === 403) {
+      toast.error('Please complete your profile before uploading receipts.');
+      return;
     }
-  };
+
+    const data = await res.json();
+    if (res.ok) {
+      toast.success('Receipt uploaded successfully');
+      setReceipt(null);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      // Refresh payments after upload
+      const refreshed = await fetch('https://sof-edu-backend.onrender.com/student/payments', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (refreshed.status === 403) {
+        toast.error('Please complete your profile before viewing payments.');
+        return;
+      }
+      const refreshedData = await refreshed.json();
+      if (refreshed.ok) {
+        const formatted = Array.isArray(refreshedData)
+          ? refreshedData.map(p => ({
+              ...p,
+              amount: p.amountExpected || 0,
+              paid: p.amountPaid || 0,
+              balance: (p.amountExpected || 0) - (p.amountPaid || 0),
+            }))
+          : [];
+        setPayments(formatted);
+      }
+    } else {
+      toast.error(data.message || 'Upload failed');
+    }
+  } catch {
+    toast.error('Upload failed');
+  } finally {
+    setUploading(false);
+  }
+};
+
 
   const verifyPayment = async (reference) => {
     if (verifying) return;
@@ -146,45 +168,50 @@ const StudentPaymentPage = () => {
   };
 
   const initiatePaystack = async () => {
-    if (loadingPayment || !student) return;
-    setLoadingPayment(true);
+  if (loadingPayment || !student) return;
+  setLoadingPayment(true);
 
-    try {
-      const res = await fetch('https://sof-edu-backend.onrender.com/student/payments/initiate-paystack', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await res.json();
+  try {
+    const res = await fetch('https://sof-edu-backend.onrender.com/student/payments/initiate-paystack', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-      if (!res.ok) {
-        toast.error(data.message || 'Payment initiation failed');
-        return;
-      }
-
-      const handler = window.PaystackPop.setup({
-        key: 'pk_test_910c018e2755e72aabab02f830453d1d2fd6a8ce',
-        email: student.email,
-        amount: data.amount * 100,
-        metadata: data.metadata,
-        callback: function (response) {
-          toast.info('Verifying payment...');
-          verifyPayment(response.reference);
-        },
-        onClose: function () {
-          toast.warn('Payment window closed');
-        },
-      });
-
-      handler.openIframe();
-    } catch {
-      toast.error('Could not initiate Paystack payment');
-    } finally {
-      setLoadingPayment(false);
+    if (res.status === 403) {
+      toast.error('Please complete your profile before making payments.');
+      return;
     }
-  };
+
+    const data = await res.json();
+    if (!res.ok) {
+      toast.error(data.message || 'Payment initiation failed');
+      return;
+    }
+
+    const handler = window.PaystackPop.setup({
+      key: 'pk_test_910c018e2755e72aabab02f830453d1d2fd6a8ce',
+      email: student.email,
+      amount: data.amount * 100,
+      metadata: data.metadata,
+      callback: function (response) {
+        toast.info('Verifying payment...');
+        verifyPayment(response.reference);
+      },
+      onClose: function () {
+        toast.warn('Payment window closed');
+      },
+    });
+
+    handler.openIframe();
+  } catch {
+    toast.error('Could not initiate Paystack payment');
+  } finally {
+    setLoadingPayment(false);
+  }
+};
 
   if (loading) return <LoadingSpinner />;
   if (!student) return null;
