@@ -53,13 +53,13 @@ const SuperAdminTeachers = () => {
 
       const teacherList = res.data.teachers || [];
       const updated = teacherList.map((t) => ({
-        ...t,
-        department: t.department?.[0] || "",
-        level: "",
-        semester: "",
-        courses: [],
-        availableCourses: [],
-      }));
+  ...t,
+  department: t.department || "", 
+  level: "",
+  semester: "",
+  courses: [],
+  availableCourses: [],
+}));
 
       setTeachers(updated);
       console.log("Teachers loaded:", updated);
@@ -303,16 +303,18 @@ const assignCourses = async (teacherId, index) => {
 
                         {/* ASSIGNMENT SECTION */}
                         <label><strong>Department:</strong>
-                          <select
-                            value={teacher.department}
-                            onChange={(e) => handleDropdownChange(index, "department", e.target.value)}
-                          >
-                            <option value="">Select department</option>
-                            {departments.map((dept) => (
-                              <option key={dept} value={dept}>{dept}</option>
-                            ))}
-                          </select>
-                        </label>
+  <select
+    value={teacher.department} 
+    onChange={(e) => handleDropdownChange(index, "department", e.target.value)}
+  >
+    <option value="">Select department</option>
+    {departments.map((dept) => (
+      <option key={dept} value={dept}>
+        {dept}  
+      </option>
+    ))}
+  </select>
+</label>
 
                         <label><strong>Level:</strong>
                           <select
