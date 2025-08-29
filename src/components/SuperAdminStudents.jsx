@@ -281,7 +281,7 @@ const SuperAdminStudents = () => {
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
     if (!token) {
-      navigate("/login-superadmin"); // Adjust this route based on your app
+      navigate("/login-superadmin"); 
     }
   }, [navigate]);
   const fetchStudents = useCallback(async () => {
@@ -343,6 +343,10 @@ const SuperAdminStudents = () => {
   };
 
   const approveCourse = async (studentId, courseId) => {
+
+  toast.info("Approving course in 5 seconds...");
+
+  setTimeout(async () => {
     try {
       const token = localStorage.getItem("admin_token");
       await axios.patch(
@@ -355,7 +359,8 @@ const SuperAdminStudents = () => {
     } catch (err) {
       toast.error("Failed to approve course");
     }
-  };
+  }, 5000); 
+};
 
   const rejectCourse = async (studentId, courseId) => {
     try {
