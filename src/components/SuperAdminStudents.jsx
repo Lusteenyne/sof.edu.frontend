@@ -22,7 +22,7 @@ const StudentDetails = ({
   student,
   results,
   approveCourse,
-  approveAllCourses,
+  
   rejectCourse,
   approveGrade,
   getCourseTitleById,
@@ -266,7 +266,6 @@ const StudentRow = React.memo(({
               student={student}
               results={studentResults[student._id] || []}
               approveCourse={approveCourse}
-              approveAllCourses={approveAllCourses}
               rejectCourse={rejectCourse}
               approveGrade={approveGrade}
               getCourseTitleById={getCourseTitleById}
@@ -358,40 +357,46 @@ const SuperAdminStudents = () => {
     }
   };
 
-  // Approve one course immediately
+  // Approve one course (with 5 sec timer)
 const approveCourse = async (studentId, courseId) => {
-  toast.info("Approving course...");
-  try {
-    const token = localStorage.getItem("admin_token");
-    await axios.patch(
-      `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
-      {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    toast.success("Course approved");
-    fetchStudents();
-  } catch (err) {
-    toast.error("Failed to approve course");
-  }
+  toast.info("Approving course in 5 seconds...");
+
+  setTimeout(async () => {
+    try {
+      const token = localStorage.getItem("admin_token");
+      await axios.patch(
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.success("Course approved");
+      fetchStudents();
+    } catch (err) {
+      toast.error("Failed to approve course");
+    }
+  }, 5000); 
 };
 
-// Approve ALL courses for one student immediately
+
+// Approve ALL courses for one student (with 5 sec timer)
 const approveAllCourses = async (studentId) => {
-  toast.info("Approving all courses...");
-  try {
-    const token = localStorage.getItem("admin_token");
-    await axios.patch(
-      `https://sof-edu-backend.onrender.com/admin/students/${studentId}/approve-courses`,
-      {},
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    toast.success("All courses approved");
-    fetchStudents();
-  } catch (err) {
-    toast.error("Failed to approve all courses");
-  }
-};
+  toast.info("Approving all courses in 5 seconds...");
 
+  setTimeout(async () => {
+    try {
+      const token = localStorage.getItem("admin_token");
+      await axios.patch(
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/approve-courses`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.success("All courses approved");
+      fetchStudents();
+    } catch (err) {
+      toast.error("Failed to approve all courses");
+    }
+  }, 5000); // 
+};
 
 
   const rejectCourse = async (studentId, courseId) => {
@@ -508,7 +513,6 @@ const approveAllCourses = async (studentId) => {
                 setExpandedId={setExpandedId}
                 handleDelete={handleDelete}
                 approveCourse={approveCourse}
-                 approveAllCourses={approveAllCourses}
                 rejectCourse={rejectCourse}
                 approveGrade={approveGrade}
                 getCourseTitleById={getCourseTitleById}
