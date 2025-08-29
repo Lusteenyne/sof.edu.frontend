@@ -22,7 +22,7 @@ const StudentDetails = ({
   student,
   results,
   approveCourse,
-  
+  approveAllCourses,
   rejectCourse,
   approveGrade,
   getCourseTitleById,
@@ -263,16 +263,17 @@ const StudentRow = React.memo(({
         <tr>
           <td colSpan="8">
             <StudentDetails
-              student={student}
-              results={studentResults[student._id] || []}
-              approveCourse={approveCourse}
-              rejectCourse={rejectCourse}
-              approveGrade={approveGrade}
-              getCourseTitleById={getCourseTitleById}
-              submitToTeacher={submitToTeacher}
-              updateStudentInfo={updateStudentInfo}
-              onUpdateStudent={fetchStudents}
-            />
+  student={student}
+  results={studentResults[student._id] || []}
+  approveCourse={approveCourse}
+  approveAllCourses={approveAllCourses}
+  rejectCourse={rejectCourse}
+  approveGrade={approveGrade}
+  getCourseTitleById={getCourseTitleById}
+  submitToTeacher={submitToTeacher}
+  onUpdateStudent={fetchStudents}
+/>
+
           </td>
         </tr>
       )}
@@ -357,46 +358,40 @@ const SuperAdminStudents = () => {
     }
   };
 
-  // Approve one course (with 5 sec timer)
+  // Approve one course immediately
 const approveCourse = async (studentId, courseId) => {
-  toast.info("Approving course in 5 seconds...");
-
-  setTimeout(async () => {
-    try {
-      const token = localStorage.getItem("admin_token");
-      await axios.patch(
-        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      toast.success("Course approved");
-      fetchStudents();
-    } catch (err) {
-      toast.error("Failed to approve course");
-    }
-  }, 5000); 
+  toast.info("Approving course...");
+  try {
+    const token = localStorage.getItem("admin_token");
+    await axios.patch(
+      `https://sof-edu-backend.onrender.com/admin/students/${studentId}/courses/${courseId}/approve`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    toast.success("Course approved");
+    fetchStudents();
+  } catch (err) {
+    toast.error("Failed to approve course");
+  }
 };
 
-
-// Approve ALL courses for one student (with 5 sec timer)
+// Approve ALL courses for one student immediately
 const approveAllCourses = async (studentId) => {
-  toast.info("Approving all courses in 5 seconds...");
-
-  setTimeout(async () => {
-    try {
-      const token = localStorage.getItem("admin_token");
-      await axios.patch(
-        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/approve-courses`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      toast.success("All courses approved");
-      fetchStudents();
-    } catch (err) {
-      toast.error("Failed to approve all courses");
-    }
-  }, 5000); // 
+  toast.info("Approving all courses...");
+  try {
+    const token = localStorage.getItem("admin_token");
+    await axios.patch(
+      `https://sof-edu-backend.onrender.com/admin/students/${studentId}/approve-courses`,
+      {},
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    toast.success("All courses approved");
+    fetchStudents();
+  } catch (err) {
+    toast.error("Failed to approve all courses");
+  }
 };
+
 
 
   const rejectCourse = async (studentId, courseId) => {
@@ -506,21 +501,21 @@ const approveAllCourses = async (studentId) => {
           <tbody>
             {filteredStudents.map((student, index) => (
               <StudentRow
-                key={student._id}
-                student={student}
-                index={index}
-                expandedId={expandedId}
-                setExpandedId={setExpandedId}
-                handleDelete={handleDelete}
-                approveCourse={approveCourse}
-                rejectCourse={rejectCourse}
-                approveGrade={approveGrade}
-                getCourseTitleById={getCourseTitleById}
-                submitToTeacher={submitToTeacher}
-                studentResults={studentResults}
-                loadStudentResults={loadStudentResults}
-                updateStudentInfo={updateStudentInfo}
-                fetchStudents={fetchStudents}
+key={student._id}
+      student={student}
+      index={index}
+      expandedId={expandedId}
+      setExpandedId={setExpandedId}
+      handleDelete={handleDelete}
+      approveCourse={approveCourse}
+      approveAllCourses={approveAllCourses}
+      rejectCourse={rejectCourse}
+      approveGrade={approveGrade}
+      getCourseTitleById={getCourseTitleById}
+      submitToTeacher={submitToTeacher}
+      studentResults={studentResults}
+      loadStudentResults={loadStudentResults}
+      fetchStudents={fetchStudents}
               />
             ))}
           </tbody>
