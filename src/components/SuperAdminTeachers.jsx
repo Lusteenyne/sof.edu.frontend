@@ -300,44 +300,54 @@ const assignCourses = async (teacherId, index) => {
                         <p><strong>Marital Status:</strong> {teacher.maritalStatus || "N/A"}</p>
                         <p><strong>Nationality:</strong> {teacher.nationality || "N/A"}</p>
                         <p><strong>State of Origin:</strong> {teacher.stateOfOrigin || "N/A"}</p>
+<div className="sat-assignment-section">
+  {/* Department */}
+  <label className="sat-form-label">
+    <strong>Department:</strong>
+    <select
+      className="sat-select"
+      value={teacher.department}
+      onChange={(e) => handleDropdownChange(index, "department", e.target.value)}
+    >
+      <option value="">Select department</option>
+      {departments.map((dept) => (
+        <option key={dept} value={dept}>
+          {dept}
+        </option>
+      ))}
+    </select>
+  </label>
 
-                        {/* ASSIGNMENT SECTION */}
-                        <label><strong>Department:</strong>
-  <select
-    value={teacher.department} 
-    onChange={(e) => handleDropdownChange(index, "department", e.target.value)}
-  >
-    <option value="">Select department</option>
-    {departments.map((dept) => (
-      <option key={dept} value={dept}>
-        {dept}  
-      </option>
-    ))}
-  </select>
-</label>
+  {/* Level */}
+  <label className="sat-form-label">
+    <strong>Level:</strong>
+    <select
+      className="sat-select"
+      value={teacher.level}
+      onChange={(e) => handleDropdownChange(index, "level", e.target.value)}
+    >
+      <option value="">Select level</option>
+      {[100, 200, 300, 400, 500].map((lvl) => (
+        <option key={lvl} value={lvl}>{lvl} Level</option>
+      ))}
+    </select>
+  </label>
 
-                        <label><strong>Level:</strong>
-                          <select
-                            value={teacher.level}
-                            onChange={(e) => handleDropdownChange(index, "level", e.target.value)}
-                          >
-                            <option value="">Select level</option>
-                            {[100, 200, 300, 400, 500].map((lvl) => (
-                              <option key={lvl} value={lvl}>{lvl} Level</option>
-                            ))}
-                          </select>
-                        </label>
+  {/* Semester */}
+  <label className="sat-form-label">
+    <strong>Semester:</strong>
+    <select
+      className="sat-select"
+      value={teacher.semester}
+      onChange={(e) => handleDropdownChange(index, "semester", e.target.value)}
+    >
+      <option value="">Select semester</option>
+      <option value="First Semester">First</option>
+      <option value="Second Semester">Second</option>
+    </select>
+  </label>
+</div>
 
-                        <label><strong>Semester:</strong>
-                          <select
-                            value={teacher.semester}
-                            onChange={(e) => handleDropdownChange(index, "semester", e.target.value)}
-                          >
-                            <option value="">Select semester</option>
-                            <option value="First Semester">First</option>
-                            <option value="Second Semester">Second</option>
-                          </select>
-                        </label>
 <div className="sat-assign-course">
   <label><strong>Assign Courses:</strong></label>
   <div className="sat-checkbox-list">
