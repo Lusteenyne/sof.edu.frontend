@@ -53,6 +53,88 @@ padding: 0.4rem 0.6rem;
   max-width: 100%;
 }
 
+/* Base Button */
+.sas-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Approve (green) */
+.sas-approve-btn,
+.sas-approve-grade-btn,
+.sas-approve-all-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+.sas-approve-btn:hover,
+.sas-approve-grade-btn:hover,
+.sas-approve-all-btn:hover {
+  background-color: #218838;
+}
+
+/* Reject (red) */
+.sas-reject-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+.sas-reject-btn:hover {
+  background-color: #c82333;
+}
+
+/* Delete (red, smaller) */
+.sas-delete-btn {
+  background-color: #ff4d4f;
+  color: #fff;
+  padding: 4px 8px;
+}
+.sas-delete-btn:hover {
+  background-color: #e63e40;
+}
+
+/* View (blue) */
+.sas-view-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 4px 8px;
+}
+.sas-view-btn:hover {
+  background-color: #0069d9;
+}
+
+/* Save & Edit */
+.sas-save-btn {
+  background-color: #17a2b8;
+  color: #fff;
+}
+.sas-save-btn:hover {
+  background-color: #138496;
+}
+
+/* Submit Grade */
+.sas-submit-grade-btn {
+  background-color: #6f42c1;
+  color: #fff;
+}
+.sas-submit-grade-btn:hover {
+  background-color: #5936a2;
+}
+
+/* Disabled state for all buttons */
+.sas-btn:disabled,
+.sas-approve-all-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+
 /* Table */
 .sas-students-table {
   width: 100%;

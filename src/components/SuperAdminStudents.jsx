@@ -141,22 +141,36 @@ const StudentDetails = ({
       <p><strong>Payment Status:</strong> {student.paymentStatus || "N/A"}</p>
      
       
-      {/* Courses */}
-      <div className="sas-assigned-courses">
-        <h4>Submitted Courses</h4>
-        {student.courses?.length ? student.courses.map(({ course, status }) => (
-          <div key={course} className="sas-course-status-row">
-            <span>{getCourseTitleById(course)}</span>
-            <span>Status: {status}</span>
-            {status === "pending" && (
-              <>
-                <button onClick={() => approveCourse(student._id, course)} className="sas-approve-btn"><FaCheck /> Approve</button>
-                <button onClick={() => rejectCourse(student._id, course)} className="sas-reject-btn"><FaTimes /> Reject</button>
-              </>
-            )}
-          </div>
-        )) : <p>No courses submitted yet.</p>}
-      </div>
+     <div className="sas-assigned-courses">
+  <h4>Submitted Courses</h4>
+
+  {/* Approve All Button */}
+  {student.courses?.some(c => c.status === "pending") && (
+    <button 
+      onClick={() => approveAllCourses(student._id)} 
+      className="sas-approve-all-btn"
+    >
+      Approve All Courses
+    </button>
+  )}
+
+  {student.courses?.length ? student.courses.map(({ course, status }) => (
+    <div key={course} className="sas-course-status-row">
+      <span>{getCourseTitleById(course)}</span>
+      <span>Status: {status}</span>
+      {status === "pending" && (
+        <>
+          <button onClick={() => approveCourse(student._id, course)} className="sas-approve-btn">
+            <FaCheck /> Approve
+          </button>
+          <button onClick={() => rejectCourse(student._id, course)} className="sas-reject-btn">
+            <FaTimes /> Reject
+          </button>
+        </>
+      )}
+    </div>
+  )) : <p>No courses submitted yet.</p>}
+</div>
 
       {/* Grades */}
       <div className="sas-student-grades">
@@ -342,8 +356,8 @@ const SuperAdminStudents = () => {
     }
   };
 
-  const approveCourse = async (studentId, courseId) => {
-
+  // Approve one course (with 5 sec timer)
+const approveCourse = async (studentId, courseId) => {
   toast.info("Approving course in 5 seconds...");
 
   setTimeout(async () => {
@@ -361,6 +375,28 @@ const SuperAdminStudents = () => {
     }
   }, 5000); 
 };
+
+
+// Approve ALL courses for one student (with 5 sec timer)
+const approveAllCourses = async (studentId) => {
+  toast.info("Approving all courses in 5 seconds...");
+
+  setTimeout(async () => {
+    try {
+      const token = localStorage.getItem("admin_token");
+      await axios.patch(
+        `https://sof-edu-backend.onrender.com/admin/students/${studentId}/approve-courses`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      toast.success("All courses approved");
+      fetchStudents();
+    } catch (err) {
+      toast.error("Failed to approve all courses");
+    }
+  }, 5000); // 
+};
+
 
   const rejectCourse = async (studentId, courseId) => {
     try {
