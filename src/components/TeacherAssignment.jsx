@@ -22,136 +22,176 @@ const TeacherAssignment = () => {
 
   const token = localStorage.getItem('teacher_token');
 
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const res = await fetch('https://sof-edu-backend.onrender.com/teacher/courses', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await res.json();
-        setCourses(data);
-      } catch (err) {
-        console.error('Failed to fetch courses:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCourses();
-  }, [token]);
-
-  useEffect(() => {
-    if (selectedCourseId) fetchAssignments();
-  }, [selectedCourseId]);
-
-  const fetchAssignments = async () => {
+ useEffect(() => {
+  const fetchCourses = async () => {
     try {
-      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/assignments`, {
+      const res = await fetch('https://sof-edu-backend.onrender.com/teacher/courses', {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const data = await res.json();
-      setAssignments(data || []);
-    } catch (err) {
-      console.error('Failed to fetch assignments:', err);
-    }
-  };
-
-  const fetchSubmissions = async (assignmentId) => {
-    try {
-      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/${assignmentId}/submissions`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await res.json();
-      setSubmissions(Array.isArray(data) ? data : data.submissions || []);
-    } catch (err) {
-      console.error('Failed to fetch submissions:', err);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!title || !description || !deadline || !selectedCourseId) {
-      toast.error('All fields are required.');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('deadline', deadline);
-    if (file) formData.append('files', file);
-
-    setSubmitting(true);
-
-    try {
-      const url = editId
-        ? `https://sof-edu-backend.onrender.com/teacher/assignments/${editId}`
-        : `https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/give-assignments`;
-      const method = editId ? 'PATCH' : 'POST';
-
-      const res = await fetch(url, { method, headers: { Authorization: `Bearer ${token}` }, body: formData });
       const data = await res.json();
 
       if (res.ok) {
-        toast.success(editId ? 'Assignment updated.' : 'Assignment posted.');
-        setTitle('');
-        setDescription('');
-        setDeadline('');
-        setFile(null);
-        setEditId(null);
-        fetchAssignments();
-      } else toast.error(data.message || 'Submission failed');
+        setCourses(Array.isArray(data) ? data : []);
+      } else {
+        console.error('Error fetching courses:', data.message);
+        toast.error(data.message || 'Failed to fetch courses');
+        setCourses([]); // prevent .map crash
+      }
     } catch (err) {
-      toast.error('Server error');
+      console.error('Failed to fetch courses:', err);
+      setCourses([]);
     } finally {
-      setSubmitting(false);
+      setLoading(false);
     }
   };
+  fetchCourses();
+}, [token]);
 
-  const handleEdit = (assignment) => {
-    setTitle(assignment.title);
-    setDescription(assignment.description);
-    setDeadline(new Date(assignment.deadline).toISOString().slice(0, 16));
-    setEditId(assignment._id);
-    setFile(null);
-  };
+useEffect(() => {
+  if (selectedCourseId) fetchAssignments();
+}, [selectedCourseId]);
 
-  const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this assignment?')) return;
-    try {
-      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/${id}`, {
+const fetchAssignments = async () => {
+  try {
+    const res = await fetch(
+      `https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/assignments`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const data = await res.json();
+
+    if (res.ok) {
+      setAssignments(Array.isArray(data) ? data : []);
+    } else {
+      console.error('Error fetching assignments:', data.message);
+      toast.error(data.message || 'Failed to fetch assignments');
+      setAssignments([]);
+    }
+  } catch (err) {
+    console.error('Failed to fetch assignments:', err);
+    setAssignments([]);
+  }
+};
+
+const fetchSubmissions = async (assignmentId) => {
+  try {
+    const res = await fetch(
+      `https://sof-edu-backend.onrender.com/teacher/assignments/${assignmentId}/submissions`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    const data = await res.json();
+    setSubmissions(Array.isArray(data) ? data : data.submissions || []);
+  } catch (err) {
+    console.error('Failed to fetch submissions:', err);
+    setSubmissions([]);
+  }
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!title || !description || !deadline || !selectedCourseId) {
+    toast.error('All fields are required.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('description', description);
+  formData.append('deadline', deadline);
+  if (file) formData.append('files', file);
+
+  setSubmitting(true);
+
+  try {
+    const url = editId
+      ? `https://sof-edu-backend.onrender.com/teacher/assignments/${editId}`
+      : `https://sof-edu-backend.onrender.com/teacher/course/${selectedCourseId}/give-assignments`;
+    const method = editId ? 'PATCH' : 'POST';
+
+    const res = await fetch(url, {
+      method,
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData,
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success(editId ? 'Assignment updated.' : 'Assignment posted.');
+      setTitle('');
+      setDescription('');
+      setDeadline('');
+      setFile(null);
+      setEditId(null);
+      fetchAssignments();
+    } else {
+      toast.error(data.message || 'Submission failed');
+    }
+  } catch (err) {
+    toast.error('Server error');
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+const handleEdit = (assignment) => {
+  setTitle(assignment.title);
+  setDescription(assignment.description);
+  setDeadline(new Date(assignment.deadline).toISOString().slice(0, 16));
+  setEditId(assignment._id);
+  setFile(null);
+};
+
+const handleDelete = async (id) => {
+  if (!window.confirm('Are you sure you want to delete this assignment?')) return;
+  try {
+    const res = await fetch(
+      `https://sof-edu-backend.onrender.com/teacher/assignments/${id}`,
+      {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
-      });
-      if (res.ok) {
-        toast.success('Assignment deleted');
-        fetchAssignments();
-      } else toast.error('Failed to delete');
-    } catch (err) {
-      toast.error('Server error');
+      }
+    );
+    if (res.ok) {
+      toast.success('Assignment deleted');
+      fetchAssignments();
+    } else {
+      const data = await res.json();
+      toast.error(data.message || 'Failed to delete');
     }
-  };
+  } catch (err) {
+    toast.error('Server error');
+  }
+};
 
-  const handleGradeSubmit = async (submissionId, score) => {
-    if (score === undefined || score === null || isNaN(score)) {
-      toast.error('Invalid score');
-      return;
-    }
+const handleGradeSubmit = async (submissionId, score) => {
+  if (score === undefined || score === null || isNaN(score)) {
+    toast.error('Invalid score');
+    return;
+  }
 
-    try {
-      const res = await fetch(`https://sof-edu-backend.onrender.com/teacher/assignments/submission/${submissionId}/grade`, {
+  try {
+    const res = await fetch(
+      `https://sof-edu-backend.onrender.com/teacher/assignments/submission/${submissionId}/grade`,
+      {
         method: 'POST',
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ score: Number(score) }),
-      });
+      }
+    );
 
-      if (res.ok) {
-        toast.success('Score saved');
-        fetchSubmissions(visibleSubmissionsAssignmentId);
-      } else toast.error('Failed to save score');
-    } catch (err) {
-      toast.error('Server error');
+    if (res.ok) {
+      toast.success('Score saved');
+      fetchSubmissions(visibleSubmissionsAssignmentId);
+    } else {
+      const data = await res.json();
+      toast.error(data.message || 'Failed to save score');
     }
-  };
+  } catch (err) {
+    toast.error('Server error');
+  }
+};
 
   if (loading) return <LoadingSpinner />;
 
