@@ -353,7 +353,7 @@ function NewLanding() {
             <input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Please provide a valid email"
               value={formData.email}
               onChange={handleChange}
               required

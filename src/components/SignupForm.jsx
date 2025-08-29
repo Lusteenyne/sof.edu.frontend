@@ -188,7 +188,7 @@ const SignupForm = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder=" "
+                  placeholder="Please provide a valid email"
                   required
                 />
                 <label>Email</label>
