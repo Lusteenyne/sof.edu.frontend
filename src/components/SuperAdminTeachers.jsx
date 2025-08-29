@@ -290,6 +290,7 @@ const assignCourses = async (teacherId, index) => {
                         {/* PERSONAL DETAILS */}
                         <p><strong>Full Name:</strong> {teacher.title} {teacher.firstName} {teacher.lastName}</p>
                         <p><strong>Email:</strong> {teacher.email}</p>
+                         <p><strong>Department:</strong> {teacher.department}</p>
                         <p><strong>Phone:</strong> {teacher.phoneNumber || "N/A"}</p>
                         <p><strong>Age:</strong> {teacher.age || "N/A"}</p>
                         <p><strong>Gender:</strong> {teacher.gender || "N/A"}</p>
