@@ -227,7 +227,7 @@ const StudentDetails = ({
 // StudentRow
 const StudentRow = React.memo(({
   student, index, expandedId, setExpandedId,
-  handleDelete, approveCourse, rejectCourse, approveGrade,
+  handleDelete, approveCourse, approveAllCourses, rejectCourse, approveGrade,
   getCourseTitleById, submitToTeacher, studentResults,
   loadStudentResults, updateStudentInfo, fetchStudents
 }) => {
@@ -254,8 +254,11 @@ const StudentRow = React.memo(({
           </button>
         </td>
         <td>
-          <button onClick={() => setExpandedId(prev => prev === student._id ? null : student._id)} className="sas-view-btn">
-            {isExpanded ? <FaEyeSlash /> : <FaEye />} {isExpanded ? "" : ""}
+          <button 
+            onClick={() => setExpandedId(prev => prev === student._id ? null : student._id)} 
+            className="sas-view-btn"
+          >
+            {isExpanded ? <FaEyeSlash /> : <FaEye />} 
           </button>
         </td>
       </tr>
@@ -263,16 +266,16 @@ const StudentRow = React.memo(({
         <tr>
           <td colSpan="8">
             <StudentDetails
-  student={student}
-  results={studentResults[student._id] || []}
-  approveCourse={approveCourse}
-  approveAllCourses={approveAllCourses}
-  rejectCourse={rejectCourse}
-  approveGrade={approveGrade}
-  getCourseTitleById={getCourseTitleById}
-  submitToTeacher={submitToTeacher}
-  onUpdateStudent={fetchStudents}
-/>
+              student={student}
+              results={studentResults[student._id] || []}
+              approveCourse={approveCourse}
+              approveAllCourses={approveAllCourses}  
+              rejectCourse={rejectCourse}
+              approveGrade={approveGrade}
+              getCourseTitleById={getCourseTitleById}
+              submitToTeacher={submitToTeacher}
+              onUpdateStudent={fetchStudents}
+            />
 
           </td>
         </tr>
@@ -500,23 +503,24 @@ const approveAllCourses = async (studentId) => {
           </thead>
           <tbody>
             {filteredStudents.map((student, index) => (
-              <StudentRow
-key={student._id}
-      student={student}
-      index={index}
-      expandedId={expandedId}
-      setExpandedId={setExpandedId}
-      handleDelete={handleDelete}
-      approveCourse={approveCourse}
-      approveAllCourses={approveAllCourses}
-      rejectCourse={rejectCourse}
-      approveGrade={approveGrade}
-      getCourseTitleById={getCourseTitleById}
-      submitToTeacher={submitToTeacher}
-      studentResults={studentResults}
-      loadStudentResults={loadStudentResults}
-      fetchStudents={fetchStudents}
-              />
+             <StudentRow
+  key={student._id}
+  student={student}
+  index={index}
+  expandedId={expandedId}
+  setExpandedId={setExpandedId}
+  handleDelete={handleDelete}
+  approveCourse={approveCourse}
+  approveAllCourses={approveAllCourses}  
+  rejectCourse={rejectCourse}
+  approveGrade={approveGrade}
+  getCourseTitleById={getCourseTitleById}
+  submitToTeacher={submitToTeacher}
+  studentResults={studentResults}
+  loadStudentResults={loadStudentResults}
+  fetchStudents={fetchStudents}
+/>
+
             ))}
           </tbody>
         </table>

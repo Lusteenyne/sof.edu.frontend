@@ -24,41 +24,47 @@ const StudentCourses = () => {
     }
 
     const fetchData = async () => {
-  try {
-    const [studentRes, availableRes, submittedRes] = await Promise.all([
-      axios.get('https://sof-edu-backend.onrender.com/student/info', {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      axios.get('https://sof-edu-backend.onrender.com/student/courses/matching', {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      axios.get('https://sof-edu-backend.onrender.com/student/courses/submitted', {
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-    ]);
+      try {
+        const [studentRes, availableRes, submittedRes] = await Promise.all([
+          axios.get('https://sof-edu-backend.onrender.com/student/info', {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get('https://sof-edu-backend.onrender.com/student/courses/matching', {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get('https://sof-edu-backend.onrender.com/student/courses/submitted', {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+        ]);
 
-    setStudent(studentRes.data || {});
-    setAvailableCourses(availableRes.data.courses || []);
-    setSubmittedCourses(submittedRes.data.courses || []);
-  } catch (err) {
-    console.error('Error loading data:', err);
-
-    if (err.response && err.response.status === 403) {
-      toast.error('Please complete your profile before accessing courses.');
-      
-    } else {
-      toast.error('Failed to load data.');
-    }
-  } finally {
-    setLoading(false);
-  }
-};
-
+        setStudent(studentRes.data || {});
+        setAvailableCourses(availableRes.data.courses || []);
+        setSubmittedCourses(submittedRes.data.courses || []);
+      } catch (err) {
+        console.error('Error loading data:', err);
+        if (err.response && err.response.status === 403) {
+          toast.error('Please complete your profile before accessing courses.');
+        } else {
+          toast.error('Failed to load data.');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
     fetchData();
   }, [token, navigate]);
 
+  // Only allow adding courses that are not submitted or approved
   const handleAddCourse = (course) => {
+    const existing = submittedCourses.find(
+      (c) => c.course._id === course._id && c.status !== 'failed'
+    );
+    if (existing) {
+      toast.warn('You cannot add a course you already submitted or approved.');
+      return;
+    }
+
     if (!selectedCourses.some((c) => c._id === course._id)) {
       setSelectedCourses([...selectedCourses, course]);
     }
@@ -81,16 +87,18 @@ const StudentCourses = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       toast.success('Courses submitted for approval!');
-      const newSubmitted = selectedCourses.map(course => ({
+
+      const newSubmitted = selectedCourses.map((course) => ({
         course,
         status: 'pending',
         createdAt: new Date().toISOString(),
       }));
-      setSubmittedCourses(prev => [...prev, ...newSubmitted]);
+
+      setSubmittedCourses((prev) => [...prev, ...newSubmitted]);
       setSelectedCourses([]);
     } catch (err) {
       console.error('Failed to submit courses:', err);
-      toast.error('Course submission failed.');
+      toast.error(err.response?.data?.message || 'Course submission failed.');
     }
   };
 
@@ -110,19 +118,17 @@ const StudentCourses = () => {
   }, [enrichedSubmittedCourses]);
 
   if (loading) return <LoadingSpinner />;
-  // if (!student) return <div className="student-courses-error">Unable to load student information.</div>;
 
   const {
-  firstname,
-  lastname,
-  fullName,
-  studentId,
-  level,
-  department,
-  semester,
-  session,
-} = student || {};
-
+    firstname,
+    lastname,
+    fullName,
+    studentId,
+    level,
+    department,
+    semester,
+    session,
+  } = student || {};
 
   const displayName = firstname && lastname ? `${firstname} ${lastname}` : fullName || 'N/A';
 
@@ -143,12 +149,28 @@ const StudentCourses = () => {
       <div className="student-courses-section">
         <h3>Available Courses</h3>
         <ul className="student-courses-list">
-          {availableCourses.map((course) => (
-            <li key={course._id}>
-              <span>{course.code} - {course.title} ({course.unit} unit{course.unit !== 1 ? 's' : ''})</span>
-              <button type="button" onClick={() => handleAddCourse(course)}>Add</button>
-            </li>
-          ))}
+          {availableCourses.map((course) => {
+            const submitted = submittedCourses.find((c) => c.course._id === course._id);
+            const isDisabled = submitted && submitted.status !== 'failed';
+            return (
+              <li key={course._id}>
+                <span>{course.code} - {course.title} ({course.unit} unit{course.unit !== 1 ? 's' : ''})</span>
+                <button
+                  type="button"
+                  onClick={() => handleAddCourse(course)}
+                  disabled={isDisabled}
+                >
+                  {submitted
+                    ? submitted.status === 'failed'
+                      ? 'Resubmit'
+                      : submitted.status === 'approved'
+                      ? 'Approved'
+                      : 'Submitted'
+                    : 'Add'}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -194,10 +216,10 @@ const StudentCourses = () => {
                 <td data-label="Course Title">{course.title}</td>
                 <td data-label="Unit">{course.unit}</td>
                 <td
-                  className={course.status === 'approved' ? 'approved' : 'pending'}
+                  className={course.status === 'approved' ? 'approved' : course.status === 'failed' ? 'failed' : 'pending'}
                   data-label="Status"
                 >
-                  {course.status === 'approved' ? 'Approved' : 'Pending'}
+                  {course.status === 'approved' ? 'Approved' : course.status === 'failed' ? 'Failed' : 'Pending'}
                 </td>
                 <td data-label="Date Registered">
                   {course.createdAt ? new Date(course.createdAt).toLocaleDateString() : 'N/A'}
